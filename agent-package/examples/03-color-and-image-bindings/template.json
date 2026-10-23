@@ -1,0 +1,149 @@
+{
+  "id": "example-color-images",
+  "version": 1,
+  "name": "Artwork card",
+  "canvas": { "width": 300, "height": 420, "mode": "highResolution", "scale": 2 },
+  "values": {
+    "text": {
+      "HOME_URL": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home",
+      "JAPANESE_FONT_URL": "https://raw.githubusercontent.com/google/fonts/main/ofl/mplus1p/MPLUS1p-Bold.ttf",
+      "TYPE_URL": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet"
+    },
+    "image": { "artwork": { "pattern": "{HOME_URL}/{key}.png", "fallback": "images/unknown.png" }, "typeIcon": { "pattern": "{TYPE_URL}/{key}.png" } },
+    "font": { "bold": "fonts/Kanit-SemiBold.ttf", "regular": "fonts/Kanit-Medium.ttf", "japanese": "{JAPANESE_FONT_URL}" }
+  },
+  "styles": {
+    "chip": { "type": "shape", "rect": [0, 0, 128, 26], "radius": 13 },
+    "chipText": { "type": "text", "rect": [0, 0, 128, 26], "font": "{regular}", "size": 12, "color": "#FFFFFF", "align": "center", "valign": "middle", "overflow": "ellipsis", "ellipsis": "…" }
+  },
+  "elements": [
+    {
+      "name": "Background",
+      "type": "shape",
+      "rect": [0, 0, 300, 420],
+      "radius": 16,
+      "fill": { "linear": { "from": [0, 0], "to": [300, 420], "stops": [[0, "{type1.color}"], [1, "{type2.color}"]] } }
+    },
+    {
+      "name": "Name",
+      "type": "text",
+      "rect": [16, 10, 210, 32],
+      "text": "{nickname}",
+      "font": "{bold}",
+      "size": 22,
+      "color": "#FFFFFF",
+      "valign": "middle",
+      "overflow": "ellipsis",
+      "ellipsis": "…"
+    },
+    { "name": "Level", "type": "text", "rect": [226, 10, 58, 32], "text": "Lv. {level}", "font": "{regular}", "size": 14, "color": "#FFFFFF", "align": "right", "valign": "middle" },
+    { "name": "Art frame", "type": "shape", "rect": [16, 48, 268, 220], "radius": 12, "fill": "#FFFFFFE0", "stroke": { "color": "{type1.color}", "width": 3 } },
+    {
+      "name": "Artwork (web)",
+      "type": "image",
+      "rect": [24, 52, 252, 212],
+      "image": { "set": "artwork", "key": ["{pokeapi.path}", "{pokeapi.id}", "{species}"] },
+      "fit": "contain"
+    },
+    { "name": "Game sprite (data)", "type": "image", "rect": [22, 206, 56, 56], "image": "{species.sprite}", "fit": "contain", "smooth": false },
+    { "name": "Ball (data)", "type": "image", "rect": [254, 54, 24, 24], "image": "{ball.sprite}", "fit": "contain", "smooth": false },
+    { "name": "Item backdrop", "type": "shape", "shape": "ellipse", "rect": [252, 234, 28, 28], "fill": "#E0E0EE", "visible": "{hasHeldItem}" },
+    { "name": "Item (data)", "type": "image", "rect": [254, 236, 24, 24], "image": "{heldItem.sprite}", "fit": "contain", "smooth": false, "visible": "{hasHeldItem}" },
+    { "name": "Type band", "type": "shape", "rect": [10, 274, 280, 34], "radius": 10, "fill": "#FFFFFFE0" },
+    { "name": "Type 1 (web)", "type": "image", "rect": [16, 278, 130, 26], "image": { "set": "typeIcon", "key": "{pokeapi.type1.id}" }, "fit": "contain", "anchor": "left" },
+    {
+      "name": "Type 2 (web)",
+      "type": "image",
+      "rect": [154, 278, 130, 26],
+      "image": { "set": "typeIcon", "key": "{pokeapi.type2.id}" },
+      "fit": "contain",
+      "anchor": "left",
+      "visible": "{hasType2}"
+    },
+    {
+      "name": "Moves",
+      "type": "group",
+      "position": [16, 316],
+      "children": [
+        {
+          "name": "Move 1",
+          "type": "group",
+          "position": [0, 0],
+          "visible": "{hasMove1}",
+          "children": [
+            { "name": "Chip", "type": "shape", "style": "chip", "fill": "{move1.type.color}", "stroke": { "color": "#FFFFFF", "width": 2 } },
+            { "name": "Name", "type": "text", "style": "chipText", "text": "{move1.name}" }
+          ]
+        },
+        {
+          "name": "Move 2",
+          "type": "group",
+          "position": [140, 0],
+          "visible": "{hasMove2}",
+          "children": [
+            { "name": "Chip", "type": "shape", "style": "chip", "fill": "{move2.type.color}", "stroke": { "color": "#FFFFFF", "width": 2 } },
+            { "name": "Name", "type": "text", "style": "chipText", "text": "{move2.name}" }
+          ]
+        },
+        {
+          "name": "Move 3",
+          "type": "group",
+          "position": [0, 34],
+          "visible": "{hasMove3}",
+          "children": [
+            { "name": "Chip", "type": "shape", "style": "chip", "fill": "{move3.type.color}", "stroke": { "color": "#FFFFFF", "width": 2 } },
+            { "name": "Name", "type": "text", "style": "chipText", "text": "{move3.name}" }
+          ]
+        },
+        {
+          "name": "Move 4",
+          "type": "group",
+          "position": [140, 34],
+          "visible": "{hasMove4}",
+          "children": [
+            { "name": "Chip", "type": "shape", "style": "chip", "fill": "{move4.type.color}", "stroke": { "color": "#FFFFFF", "width": 2 } },
+            { "name": "Name", "type": "text", "style": "chipText", "text": "{move4.name}" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Not shiny",
+      "type": "text",
+      "rect": [16, 390, 180, 20],
+      "text": "#{species:D4} · {species.name}",
+      "font": "{regular}",
+      "size": 12,
+      "color": "#FFFFFFCC",
+      "align": "left",
+      "valign": "middle",
+      "visible": "{!isShiny}"
+    },
+    {
+      "name": "Shiny",
+      "type": "text",
+      "rect": [16, 390, 180, 20],
+      "text": "#{species:D4} · {species.name} · SHINY",
+      "font": "{bold}",
+      "size": 12,
+      "color": "#FFE066",
+      "align": "left",
+      "valign": "middle",
+      "visible": "{isShiny}"
+    },
+    {
+      "name": "Japanese name",
+      "type": "text",
+      "rect": [196, 388, 88, 24],
+      "text": "{species.name}",
+      "language": "ja",
+      "font": "{japanese}",
+      "size": 14,
+      "color": "#FFFFFF",
+      "align": "right",
+      "valign": "middle",
+      "overflow": "ellipsis",
+      "ellipsis": "…"
+    }
+  ]
+}

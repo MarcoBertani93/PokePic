@@ -1,0 +1,93 @@
+{
+  "id": "example-text-numbers",
+  "version": 1,
+  "name": "Stats sheet",
+  "canvas": { "width": 360, "height": 310, "mode": "highResolution", "scale": 2, "background": "#F4F1EA" },
+  "values": {
+    "text": { "dexNumber": "{species:D4}", "headline": "{nickname} · Lv. {level}" },
+    "color": { "INK": "#22263A", "MUTED": "#7A7F94", "BAR": "#3A5BA0" },
+    "font": { "bold": "fonts/Kanit-SemiBold.ttf", "regular": "fonts/Kanit-Medium.ttf" }
+  },
+  "styles": {
+    "label": { "type": "text", "font": "{regular}", "size": 12, "color": "{MUTED}", "valign": "middle" },
+    "value": { "type": "text", "font": "{bold}", "size": 12, "color": "{INK}", "valign": "middle", "align": "right" },
+    "bar": { "type": "shape", "fill": "{BAR}", "radius": 3 }
+  },
+  "elements": [
+    {
+      "name": "Species",
+      "type": "text",
+      "rect": [16, 10, 240, 34],
+      "text": "{species.name:upper}",
+      "font": "{bold}",
+      "size": 26,
+      "color": "{INK}",
+      "valign": "middle",
+      "overflow": "ellipsis",
+      "ellipsis": "…"
+    },
+    {
+      "name": "Dex number",
+      "type": "text",
+      "rect": [256, 10, 88, 34],
+      "text": "No. {dexNumber}",
+      "font": "{bold}",
+      "size": 16,
+      "color": "{MUTED}",
+      "align": "right",
+      "valign": "middle"
+    },
+    { "name": "Headline", "type": "text", "rect": [16, 42, 328, 20], "text": "{headline}", "font": "{regular}", "size": 14, "color": "{INK}", "valign": "middle" },
+    { "name": "Divider", "type": "line", "from": [16, 68], "to": [344, 68], "color": "#22263A33", "width": 1 },
+    {
+      "name": "Base stats",
+      "type": "group",
+      "position": [16, 76],
+      "children": [
+        { "name": "HP label", "type": "text", "style": "label", "rect": [0, 0, 40, 16], "text": "HP" },
+        { "name": "HP value", "type": "text", "style": "value", "rect": [40, 0, 28, 16], "text": "{base.hp}" },
+        { "name": "HP bar", "type": "shape", "style": "bar", "rect": [74, 4, "{base.hp}", 8] },
+        { "name": "Atk label", "type": "text", "style": "label", "rect": [0, 18, 40, 16], "text": "Atk" },
+        { "name": "Atk value", "type": "text", "style": "value", "rect": [40, 18, 28, 16], "text": "{base.atk}" },
+        { "name": "Atk bar", "type": "shape", "style": "bar", "rect": [74, 22, "{base.atk}", 8] },
+        { "name": "Def label", "type": "text", "style": "label", "rect": [0, 36, 40, 16], "text": "Def" },
+        { "name": "Def value", "type": "text", "style": "value", "rect": [40, 36, 28, 16], "text": "{base.def}" },
+        { "name": "Def bar", "type": "shape", "style": "bar", "rect": [74, 40, "{base.def}", 8] },
+        { "name": "SpA label", "type": "text", "style": "label", "rect": [0, 54, 40, 16], "text": "SpA" },
+        { "name": "SpA value", "type": "text", "style": "value", "rect": [40, 54, 28, 16], "text": "{base.spa}" },
+        { "name": "SpA bar", "type": "shape", "style": "bar", "rect": [74, 58, "{base.spa}", 8] },
+        { "name": "SpD label", "type": "text", "style": "label", "rect": [0, 72, 40, 16], "text": "SpD" },
+        { "name": "SpD value", "type": "text", "style": "value", "rect": [40, 72, 28, 16], "text": "{base.spd}" },
+        { "name": "SpD bar", "type": "shape", "style": "bar", "rect": [74, 76, "{base.spd}", 8] },
+        { "name": "Spe label", "type": "text", "style": "label", "rect": [0, 90, 40, 16], "text": "Spe" },
+        { "name": "Spe value", "type": "text", "style": "value", "rect": [40, 90, 28, 16], "text": "{base.spe}" },
+        { "name": "Spe bar", "type": "shape", "style": "bar", "rect": [74, 94, "{base.spe}", 8] },
+        { "name": "Total", "type": "text", "style": "label", "rect": [0, 110, 200, 16], "text": "Total {base.total:N0} · IV {iv.total} · EV {ev.total}" }
+      ]
+    },
+    {
+      "name": "Details",
+      "type": "group",
+      "position": [16, 208],
+      "children": [
+        { "name": "Nature", "type": "text", "style": "label", "rect": [0, 0, 150, 16], "text": "{nature.name}" },
+        { "name": "Nature (Italian)", "type": "text", "style": "label", "rect": [0, 18, 150, 16], "text": "Natura: {nature.name}", "language": "it" },
+        { "name": "Ability", "type": "text", "style": "label", "rect": [0, 36, 150, 16], "text": "{ability.name:upper}", "overflow": "ellipsis" },
+        { "name": "Friendship", "type": "text", "style": "label", "rect": [0, 54, 150, 16], "text": "Friendship {friendship:D3}" },
+        { "name": "Moves", "type": "text", "style": "label", "rect": [170, 0, 158, 56], "text": "{move1.name}\n{move2.name}\n{move3.name}", "lineHeight": 18, "valign": "top" },
+        { "name": "Fourth move", "type": "text", "style": "label", "rect": [170, 54, 158, 16], "text": "+ {move4.name}", "visible": "{hasMove4}" }
+      ]
+    },
+    {
+      "name": "Footer",
+      "type": "text",
+      "rect": [16, 286, 328, 18],
+      "text": "Literal braces: {{level}} = {level}",
+      "font": "{regular}",
+      "size": 11,
+      "color": "{MUTED}",
+      "align": "center",
+      "valign": "middle"
+    }
+  ]
+}

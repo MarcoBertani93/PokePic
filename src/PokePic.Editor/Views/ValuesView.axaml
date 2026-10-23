@@ -1,0 +1,129 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dock="using:PokePic.Editor.ViewModels.Docking"
+             xmlns:val="using:PokePic.Editor.ViewModels.Values"
+             xmlns:loc="using:PokePic.Editor.Localization"
+             x:Class="PokePic.Editor.Views.ValuesView"
+             x:DataType="dock:ValuesTool">
+  <UserControl.Styles>
+    <StyleInclude Source="avares://PokePic.Editor/Views/ResourceStyles.axaml" />
+    <Style Selector="ItemsControl.cells">
+      <Setter Property="ItemsPanel">
+        <ItemsPanelTemplate><StackPanel Orientation="Horizontal" /></ItemsPanelTemplate>
+      </Setter>
+    </Style>
+  </UserControl.Styles>
+
+  <!-- Left: the data pack's values of this kind (read-only; double-click inserts "{key}" in the JSON).
+       Right: the template's values, each a table of keys × languages. -->
+  <Grid x:Name="Root" ColumnDefinitions="*,5,2*">
+    <DockPanel Margin="6,4">
+      <TextBlock DockPanel.Dock="Top" Classes="sectionTitle" Text="{loc:Loc ValuesFromData}" Margin="0,0,0,4" ToolTip.Tip="{loc:Loc ValuesFromDataHint}" />
+      <ListBox x:Name="DataList" ItemsSource="{Binding Tab.DataItems}">
+        <ListBox.ItemTemplate>
+          <DataTemplate x:DataType="val:DataItem">
+            <Grid ColumnDefinitions="170,Auto,*" ToolTip.Tip="{Binding Languages}">
+              <TextBlock Text="{Binding Key}" FontFamily="Cascadia Mono,Consolas,monospace" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+              <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="4" Margin="0,0,6,0" VerticalAlignment="Center">
+                <Border Width="14" Height="14" CornerRadius="2" Background="{Binding Swatch}" BorderBrush="Gray" BorderThickness="1"
+                        IsVisible="{Binding Swatch, Converter={x:Static ObjectConverters.IsNotNull}}" />
+                <Border Background="#5A5A5A" Padding="1" IsVisible="{Binding Thumbnail, Converter={x:Static ObjectConverters.IsNotNull}}">
+                  <Image Source="{Binding Thumbnail}" MaxWidth="48" MaxHeight="40" RenderOptions.BitmapInterpolationMode="None" />
+                </Border>
+              </StackPanel>
+              <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                <TextBlock Text="{Binding Display}" TextTrimming="CharacterEllipsis" />
+                <TextBlock Classes="info" Text="{Binding Languages}" IsVisible="{Binding Languages, Converter={x:Static ObjectConverters.IsNotNull}}" />
+              </StackPanel>
+            </Grid>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+    </DockPanel>
+    <GridSplitter Grid.Column="1" ResizeDirection="Columns" />
+
+    <DockPanel Grid.Column="2" Margin="6,4" IsEnabled="{Binding Main.CanEditVisually}">
+      <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Spacing="4" Margin="0,0,0,4">
+        <TextBlock Classes="sectionTitle" Text="{loc:Loc ValuesFromTemplate}" Margin="0,0,6,0" />
+        <Button Classes="tool" Content="{loc:Loc AddValue}" Command="{Binding Tab.AddCommand}" IsVisible="{Binding !Tab.IsNumbers}" />
+        <Button Classes="tool" Content="{loc:Loc AddInt}" Command="{Binding Tab.AddCommand}" CommandParameter="int" IsVisible="{Binding Tab.IsNumbers}" />
+        <Button Classes="tool" Content="{loc:Loc AddFloat}" Command="{Binding Tab.AddCommand}" CommandParameter="float" IsVisible="{Binding Tab.IsNumbers}" />
+        <Button Classes="tool" Content="{loc:Loc AddFile}" Command="{Binding Tab.ImportCommand}" IsVisible="{Binding Tab.CanImport}" />
+      </StackPanel>
+      <TextBlock DockPanel.Dock="Bottom" Classes="info" TextWrapping="Wrap" Text="{loc:Loc ValuesHint}" Margin="0,4,0,0" />
+
+      <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <ItemsControl ItemsSource="{Binding Tab.Items}">
+          <ItemsControl.ItemTemplate>
+            <DataTemplate x:DataType="val:ValueItem">
+              <Border Classes="item" Margin="0,0,0,6">
+                <StackPanel Spacing="2" HorizontalAlignment="Left">
+                  <!-- Name, section (numbers), form, new language. -->
+                  <StackPanel Orientation="Horizontal" Spacing="4">
+                    <TextBox Classes="mono" Width="160" FontWeight="SemiBold" Text="{Binding EditName}" ToolTip.Tip="{loc:Loc ResourceName}" />
+                    <TextBlock Classes="info" Text="{Binding Section}" IsVisible="{Binding Tab.IsNumbers}" />
+                    <ComboBox Width="110" ItemsSource="{Binding FormLabels}" SelectedIndex="{Binding FormIndex}" ToolTip.Tip="{loc:Loc FormHint}" />
+                    <TextBox Classes="mono" Width="70" Text="{Binding NewLanguage}" PlaceholderText="it, ja…" ToolTip.Tip="{loc:Loc NewLanguageHint}" />
+                    <Button Classes="tool" Content="{loc:Loc AddLanguage}" Command="{Binding AddLanguageCommand}" ToolTip.Tip="{loc:Loc NewLanguageHint}" />
+                    <Button Classes="tool" Content="{}{ }" Command="{Binding InsertCommand}" ToolTip.Tip="{loc:Loc InsertValueHint}" />
+                    <Button Classes="tool" Content="✕" Command="{Binding RemoveCommand}" />
+                  </StackPanel>
+
+                  <!-- Header: the key column of a set, then a column per language. -->
+                  <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+                    <TextBlock Classes="info" Width="123" Text="{loc:Loc SetKey}" IsVisible="{Binding HasKeys}" />
+                    <ItemsControl Classes="cells" ItemsSource="{Binding Columns}">
+                      <ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="val:LanguageColumn">
+                          <DockPanel Width="{Binding Width}" Margin="0,0,3,0">
+                            <Button DockPanel.Dock="Right" Classes="tool" Content="✕" Command="{Binding RemoveCommand}"
+                                    IsVisible="{Binding CanRemove}" ToolTip.Tip="{loc:Loc RemoveLanguageHint}" />
+                            <TextBlock Classes="sectionTitle" Text="{Binding Code}" />
+                          </DockPanel>
+                        </DataTemplate>
+                      </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                  </StackPanel>
+
+                  <ItemsControl ItemsSource="{Binding Rows}">
+                    <ItemsControl.ItemTemplate>
+                      <DataTemplate x:DataType="val:ValueRow">
+                        <StackPanel Spacing="1" Margin="0,1">
+                          <StackPanel Orientation="Horizontal">
+                            <TextBox Classes="mono" Width="120" Margin="0,0,3,0" Text="{Binding EditKey}" IsVisible="{Binding IsItem}" ToolTip.Tip="{loc:Loc SetKey}" />
+                            <TextBlock Classes="info" Width="123" Text="{Binding Label}" IsVisible="{Binding HasLabel}" />
+                            <ItemsControl Classes="cells" ItemsSource="{Binding Cells}">
+                              <ItemsControl.ItemTemplate>
+                                <DataTemplate x:DataType="val:ValueCell">
+                                  <TextBox Classes="mono" Width="{Binding Width}" Margin="0,0,3,0" Text="{Binding EditText}"
+                                           PlaceholderText="{Binding Placeholder}" ToolTip.Tip="{Binding Language}" />
+                                </DataTemplate>
+                              </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                            <Button Classes="tool" Content="✕" Command="{Binding RemoveCommand}" IsVisible="{Binding IsItem}" />
+                          </StackPanel>
+                          <!-- What the row gives in the preview language, with the current data. -->
+                          <StackPanel Orientation="Horizontal" Spacing="6" Margin="2,0">
+                            <Border Width="12" Height="12" CornerRadius="2" Background="{Binding Swatch}" BorderBrush="Gray" BorderThickness="1"
+                                    IsVisible="{Binding Swatch, Converter={x:Static ObjectConverters.IsNotNull}}" VerticalAlignment="Center" />
+                            <Border Background="#5A5A5A" Padding="1" IsVisible="{Binding Thumbnail, Converter={x:Static ObjectConverters.IsNotNull}}">
+                              <Image Source="{Binding Thumbnail}" MaxWidth="96" MaxHeight="48" Stretch="Uniform" StretchDirection="DownOnly"
+                                     RenderOptions.BitmapInterpolationMode="None" />
+                            </Border>
+                            <TextBlock Classes="info" Text="{Binding Preview}" MaxWidth="600" />
+                            <TextBlock Classes="error" Text="{Binding Error}" IsVisible="{Binding HasError}" MaxWidth="600" />
+                          </StackPanel>
+                        </StackPanel>
+                      </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                  </ItemsControl>
+                  <Button Classes="tool" HorizontalAlignment="Left" Content="{loc:Loc AddSetValue}" Command="{Binding AddRowCommand}" IsVisible="{Binding IsItems}" />
+                </StackPanel>
+              </Border>
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </ScrollViewer>
+    </DockPanel>
+  </Grid>
+</UserControl>

@@ -1,0 +1,1 @@
+A Game Boy style summary screen (pixel-perfect, 4x): nickname and level in a header colored by the first type, sprite, ball, gender icon, type icons, and IV bars 0–31 px long with the nature's +/− marks.

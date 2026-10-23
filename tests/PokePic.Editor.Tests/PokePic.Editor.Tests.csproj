@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Avalonia.Headless.XUnit 12.1.4 is built against xUnit v3 3.x. -->
+    <PackageReference Include="xunit.v3" VersionOverride="3.2.2" />
+    <PackageReference Include="Avalonia.Headless.XUnit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\PokePic.Editor\PokePic.Editor.csproj" />
+  </ItemGroup>
+
+</Project>

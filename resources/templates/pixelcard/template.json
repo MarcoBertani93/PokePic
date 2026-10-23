@@ -1,0 +1,186 @@
+{
+  "id": "pixelcard",
+  "version": 1,
+  "name": "Pixel Card",
+  "canvas": { "width": 192, "height": 128, "mode": "pixelPerfect", "scale": 4 },
+  "values": {
+    "image": {
+      "types": { "pattern": "types/{key}.png" },
+      "frame": "images/frame.png",
+      "male": "images/gender_male.png",
+      "female": "images/gender_female.png",
+      "neutral": "images/gender_neutral.png"
+    },
+    "font": { "title": "fonts/pokemon_pixel_font.ttf", "pixel": "fonts/PocketPixelRegular.ttf" }
+  },
+  "styles": {
+    "label": { "type": "text", "font": "{pixel}", "size": 8, "color": "#000000" },
+    "number": { "type": "text", "font": "{pixel}", "size": 8, "color": "#000000", "align": "right" }
+  },
+  "elements": [
+    {
+      "name": "Background",
+      "type": "group",
+      "position": [0, 0],
+      "children": [
+        { "name": "Shadow", "type": "shape", "rect": [2, 2, 190, 126], "radius": 10, "fill": "#00000080" },
+        {
+          "name": "Gradient",
+          "type": "shape",
+          "rect": [1, 1, 190, 126],
+          "radius": 10,
+          "fill": { "linear": { "from": [0, 0], "to": [192, 0], "stops": [[0, "{type1.color}"], [1, "{type2.color}"]] } }
+        },
+        { "name": "Frame", "type": "image", "rect": [0, 0, 192, 128], "image": "{frame}" }
+      ]
+    },
+    {
+      "name": "Header",
+      "type": "group",
+      "position": [0, 0],
+      "children": [
+        { "name": "Name", "type": "text", "rect": [44, 5, 106, 15], "text": "{species.name:upper}", "font": "{title}", "size": 16, "align": "center", "valign": "middle" },
+        { "name": "Level", "type": "text", "rect": [24, 9, 22, 8], "text": "{level}", "font": "{pixel}", "size": 8, "color": "#FFFFFF", "align": "center", "valign": "middle" },
+        { "name": "Type 1", "type": "image", "rect": [7, 7, 10, 10], "image": { "set": "types", "key": "{type1.key}" } },
+        { "name": "Type 2", "type": "image", "rect": [175, 7, 10, 10], "image": { "set": "types", "key": "{type2.key}" }, "visible": "{hasType2}" },
+        { "name": "Male", "type": "image", "rect": [153, 5, 13, 13], "image": "{male}", "visible": "{gender.isMale}" },
+        { "name": "Female", "type": "image", "rect": [153, 5, 13, 13], "image": "{female}", "visible": "{gender.isFemale}" },
+        { "name": "Genderless", "type": "image", "rect": [153, 5, 13, 13], "image": "{neutral}", "visible": "{gender.isNeutral}" }
+      ]
+    },
+    { "name": "Sprite", "type": "image", "rect": [1, 22, 68, 56], "image": "{species.sprite}", "flip": "horizontal" },
+    { "name": "Ball", "type": "image", "rect": [5, 65, 20, 20], "image": "{ball.sprite}" },
+    {
+      "name": "Info",
+      "type": "group",
+      "position": [20, 89],
+      "children": [
+        { "name": "Nature", "type": "text", "style": "label", "rect": [0, 0, 60, 10], "text": "{nature.name}" },
+        { "name": "Ability", "type": "text", "style": "label", "rect": [0, 12, 60, 10], "text": "{ability.name}" },
+        { "name": "Held item", "type": "text", "style": "label", "rect": [0, 24, 60, 10], "text": "{heldItem.name}" }
+      ]
+    },
+    {
+      "name": "Stats",
+      "type": "group",
+      "position": [80, 32],
+      "children": [
+        {
+          "name": "HP",
+          "type": "group",
+          "position": [0, 0],
+          "children": [
+            { "name": "IV", "type": "text", "style": "number", "rect": [0, 0, 16, 8], "text": "{iv.hp}" },
+            { "name": "EV", "type": "text", "style": "number", "rect": [0, 10, 16, 8], "text": "{ev.hp}" },
+            { "name": "Value", "type": "text", "style": "number", "rect": [0, 22, 16, 8], "text": "{stat.hp}" }
+          ]
+        },
+        {
+          "name": "Atk",
+          "type": "group",
+          "position": [18, 0],
+          "children": [
+            { "name": "IV", "type": "text", "style": "number", "rect": [0, 0, 16, 8], "text": "{iv.atk}" },
+            { "name": "EV", "type": "text", "style": "number", "rect": [0, 10, 16, 8], "text": "{ev.atk}" },
+            { "name": "Value", "type": "text", "style": "number", "rect": [0, 22, 16, 8], "text": "{stat.atk}" }
+          ]
+        },
+        {
+          "name": "Def",
+          "type": "group",
+          "position": [36, 0],
+          "children": [
+            { "name": "IV", "type": "text", "style": "number", "rect": [0, 0, 16, 8], "text": "{iv.def}" },
+            { "name": "EV", "type": "text", "style": "number", "rect": [0, 10, 16, 8], "text": "{ev.def}" },
+            { "name": "Value", "type": "text", "style": "number", "rect": [0, 22, 16, 8], "text": "{stat.def}" }
+          ]
+        },
+        {
+          "name": "SpA",
+          "type": "group",
+          "position": [54, 0],
+          "children": [
+            { "name": "IV", "type": "text", "style": "number", "rect": [0, 0, 16, 8], "text": "{iv.spa}" },
+            { "name": "EV", "type": "text", "style": "number", "rect": [0, 10, 16, 8], "text": "{ev.spa}" },
+            { "name": "Value", "type": "text", "style": "number", "rect": [0, 22, 16, 8], "text": "{stat.spa}" }
+          ]
+        },
+        {
+          "name": "SpD",
+          "type": "group",
+          "position": [72, 0],
+          "children": [
+            { "name": "IV", "type": "text", "style": "number", "rect": [0, 0, 16, 8], "text": "{iv.spd}" },
+            { "name": "EV", "type": "text", "style": "number", "rect": [0, 10, 16, 8], "text": "{ev.spd}" },
+            { "name": "Value", "type": "text", "style": "number", "rect": [0, 22, 16, 8], "text": "{stat.spd}" }
+          ]
+        },
+        {
+          "name": "Spe",
+          "type": "group",
+          "position": [90, 0],
+          "children": [
+            { "name": "IV", "type": "text", "style": "number", "rect": [0, 0, 16, 8], "text": "{iv.spe}" },
+            { "name": "EV", "type": "text", "style": "number", "rect": [0, 10, 16, 8], "text": "{ev.spe}" },
+            { "name": "Value", "type": "text", "style": "number", "rect": [0, 22, 16, 8], "text": "{stat.spe}" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Moves",
+      "type": "group",
+      "position": [86, 76],
+      "children": [
+        {
+          "name": "Move 1",
+          "type": "group",
+          "position": [0, 0],
+          "visible": "{hasMove1}",
+          "children": [
+            { "name": "Color", "type": "shape", "rect": [0, 0, 10, 10], "fill": "{move1.type.color}" },
+            { "name": "Type", "type": "image", "rect": [0, 0, 10, 10], "image": { "set": "types", "key": "{move1.type.key}" } },
+            { "name": "Name", "type": "text", "style": "label", "rect": [14, 1, 68, 10], "text": "{move1.name}" },
+            { "name": "PP", "type": "text", "style": "number", "rect": [84, 1, 16, 10], "text": "{move1.pp}" }
+          ]
+        },
+        {
+          "name": "Move 2",
+          "type": "group",
+          "position": [0, 12],
+          "visible": "{hasMove2}",
+          "children": [
+            { "name": "Color", "type": "shape", "rect": [0, 0, 10, 10], "fill": "{move2.type.color}" },
+            { "name": "Type", "type": "image", "rect": [0, 0, 10, 10], "image": { "set": "types", "key": "{move2.type.key}" } },
+            { "name": "Name", "type": "text", "style": "label", "rect": [14, 1, 68, 10], "text": "{move2.name}" },
+            { "name": "PP", "type": "text", "style": "number", "rect": [84, 1, 16, 10], "text": "{move2.pp}" }
+          ]
+        },
+        {
+          "name": "Move 3",
+          "type": "group",
+          "position": [0, 24],
+          "visible": "{hasMove3}",
+          "children": [
+            { "name": "Color", "type": "shape", "rect": [0, 0, 10, 10], "fill": "{move3.type.color}" },
+            { "name": "Type", "type": "image", "rect": [0, 0, 10, 10], "image": { "set": "types", "key": "{move3.type.key}" } },
+            { "name": "Name", "type": "text", "style": "label", "rect": [14, 1, 68, 10], "text": "{move3.name}" },
+            { "name": "PP", "type": "text", "style": "number", "rect": [84, 1, 16, 10], "text": "{move3.pp}" }
+          ]
+        },
+        {
+          "name": "Move 4",
+          "type": "group",
+          "position": [0, 36],
+          "visible": "{hasMove4}",
+          "children": [
+            { "name": "Color", "type": "shape", "rect": [0, 0, 10, 10], "fill": "{move4.type.color}" },
+            { "name": "Type", "type": "image", "rect": [0, 0, 10, 10], "image": { "set": "types", "key": "{move4.type.key}" } },
+            { "name": "Name", "type": "text", "style": "label", "rect": [14, 1, 68, 10], "text": "{move4.name}" },
+            { "name": "PP", "type": "text", "style": "number", "rect": [84, 1, 16, 10], "text": "{move4.pp}" }
+          ]
+        }
+      ]
+    }
+  ]
+}

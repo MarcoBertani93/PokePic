@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="xunit.v3" />
+    <!-- Plays PKHeX: its PKHeX.Core is in the default load context, as in PKHeX.exe. -->
+    <PackageReference Include="PKHeX.Core" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Built first, but not referenced: the test loads it from a plugins folder, like PKHeX. -->
+    <ProjectReference Include="..\..\src\PokePic.Plugin\PokePic.Plugin.csproj" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+
+</Project>

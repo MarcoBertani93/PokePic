@@ -1,0 +1,306 @@
+{
+  "id": "lightspot",
+  "version": 1,
+  "name": "Lightspot",
+  "language": "en",
+  "canvas": { "width": 600, "height": 600, "mode": "highResolution", "scale": 2 },
+  "values": {
+    "text": {
+      "ARTWORK_URL": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home",
+      "label.nature": { "en": "Nature", "ja": "性格", "fr": "Nature", "it": "Natura", "de": "Wesen", "es": "Naturaleza", "es-419": "Naturaleza", "ko": "성격", "zh-Hans": "性格", "zh-Hant": "性格" },
+      "label.ability": { "en": "Ability", "ja": "特性", "fr": "Talent", "it": "Abilità", "de": "Fähigkeit", "es": "Habilidad", "es-419": "Habilidad", "ko": "특성", "zh-Hans": "特性", "zh-Hant": "特性" },
+      "label.item": { "en": "Item", "ja": "持ち物", "fr": "Objet", "it": "Strum.", "de": "Item", "es": "Objeto", "es-419": "Objeto", "ko": "지닌 물건", "zh-Hans": "持有物", "zh-Hant": "持有物" },
+      "label.basestats": {
+        "en": "Base Stats",
+        "ja": "種族値",
+        "fr": "Stats de base",
+        "it": "Stat. Base",
+        "de": "Basiswerte",
+        "es": "Stats base",
+        "es-419": "Stats base",
+        "ko": "종족값",
+        "zh-Hans": "种族值",
+        "zh-Hant": "種族值"
+      }
+    },
+    "color": { "ink": "#47448A", "panel": "#5B58A8", "shadow": "#3B387A66" },
+    "image": {
+      "artwork": { "pattern": "{ARTWORK_URL}/{key}.png", "fallback": "images/unknown.png" },
+      "badges": { "pattern": "badges/{key}_{language}.png" },
+      "icons": { "pattern": "icons/{key}.png" }
+    },
+    "font": { "medium": "fonts/Kanit-Medium.ttf", "semibold": "fonts/Kanit-SemiBold.ttf" }
+  },
+  "styles": {
+    "title": { "type": "text", "font": "{semibold}", "size": 38, "color": "#FFFFFF", "valign": "middle" },
+    "heading": { "type": "text", "font": "{semibold}", "size": 30, "color": "{ink}", "align": "center", "valign": "middle", "overflow": "ellipsis", "ellipsis": "…" },
+    "label": { "type": "text", "font": "{semibold}", "size": 20, "color": "#FFFFFF", "align": "center", "valign": "middle" },
+    "value": { "type": "text", "font": "{medium}", "size": 21, "color": "{ink}", "align": "center", "valign": "middle", "overflow": "ellipsis", "ellipsis": "…" },
+    "number": { "type": "text", "font": "{medium}", "size": 28, "color": "{ink}", "align": "center", "valign": "middle" },
+    "small": { "type": "text", "font": "{semibold}", "size": 15, "color": "{ink}", "align": "center", "valign": "middle", "overflow": "ellipsis", "ellipsis": "…" }
+  },
+  "elements": [
+    {
+      "name": "Background",
+      "type": "group",
+      "position": [0, 0],
+      "children": [
+        {
+          "name": "Types",
+          "type": "shape",
+          "rect": [0, 0, 600, 600],
+          "fill": { "linear": { "from": [0, 0], "to": [600, 600], "stops": [[0, "{type1.color}"], [1, "{type2.color}"]] } }
+        },
+        { "name": "Veil", "type": "shape", "rect": [0, 0, 600, 600], "fill": "#FFFFFFB0" },
+        { "name": "Ring", "type": "shape", "shape": "ellipse", "rect": [352, 66, 244, 244], "stroke": { "color": "#FFFFFF99", "width": 14 } },
+        { "name": "Ring inner", "type": "shape", "shape": "ellipse", "rect": [400, 114, 148, 148], "stroke": { "color": "#FFFFFF66", "width": 6 } }
+      ]
+    },
+    {
+      "name": "Header",
+      "type": "group",
+      "position": [0, 0],
+      "children": [
+        { "name": "Bar", "type": "shape", "rect": [0, 0, 600, 60], "fill": { "linear": { "from": [0, 0], "to": [600, 0], "stops": [[0, "#7471C9"], [1, "{panel}"]] } } },
+        { "name": "Title", "type": "text", "style": "title", "rect": [18, 0, 440, 60], "text": "POKÉMON LIGHTSPOT" },
+        { "name": "Level box", "type": "shape", "rect": [476, 0, 124, 60], "fill": "#FFFFFF" },
+        { "name": "Level", "type": "text", "style": "title", "rect": [476, 0, 124, 60], "text": "Lv. {level}", "color": "{ink}", "align": "center" }
+      ]
+    },
+    {
+      "name": "Name",
+      "type": "group",
+      "position": [16, 72],
+      "children": [
+        { "name": "Shadow", "type": "shape", "rect": [4, 4, 316, 48], "fill": "{shadow}" },
+        { "name": "Box", "type": "shape", "rect": [0, 0, 316, 48], "fill": "#FFFFFF" },
+        { "name": "Accent", "type": "shape", "rect": [0, 0, 8, 48], "fill": "{panel}" },
+        { "name": "Species", "type": "text", "style": "heading", "rect": [8, 0, 308, 48], "text": "{species.name:upper}" }
+      ]
+    },
+    { "name": "Type 1", "type": "image", "rect": [16, 130, 156, 34], "image": { "set": "badges", "key": "{type1.key}" }, "fit": "contain", "visible": "{hasType2}" },
+    { "name": "Type 2", "type": "image", "rect": [176, 130, 156, 34], "image": { "set": "badges", "key": "{type2.key}" }, "fit": "contain", "visible": "{hasType2}" },
+    { "name": "Only type", "type": "image", "rect": [96, 130, 156, 34], "image": { "set": "badges", "key": "{type1.key}" }, "fit": "contain", "visible": "{!hasType2}" },
+    {
+      "name": "Nature",
+      "type": "group",
+      "position": [16, 176],
+      "children": [
+        { "name": "Shadow", "type": "shape", "rect": [4, 4, 316, 36], "fill": "{shadow}" },
+        { "name": "Box", "type": "shape", "rect": [0, 0, 316, 36], "fill": "#FFFFFF" },
+        { "name": "Label box", "type": "shape", "rect": [0, 0, 90, 36], "fill": "{panel}" },
+        { "name": "Label", "type": "text", "style": "label", "rect": [0, 0, 90, 36], "text": "{label.nature}" },
+        { "name": "Value", "type": "text", "style": "value", "rect": [94, 0, 218, 36], "text": "{nature.name}" }
+      ]
+    },
+    {
+      "name": "Ability",
+      "type": "group",
+      "position": [16, 220],
+      "children": [
+        { "name": "Shadow", "type": "shape", "rect": [4, 4, 316, 36], "fill": "{shadow}" },
+        { "name": "Box", "type": "shape", "rect": [0, 0, 316, 36], "fill": "#FFFFFF" },
+        { "name": "Label box", "type": "shape", "rect": [0, 0, 90, 36], "fill": "{panel}" },
+        { "name": "Label", "type": "text", "style": "label", "rect": [0, 0, 90, 36], "text": "{label.ability}" },
+        { "name": "Value", "type": "text", "style": "value", "rect": [94, 0, 218, 36], "text": "{ability.name}" }
+      ]
+    },
+    {
+      "name": "Item",
+      "type": "group",
+      "position": [16, 264],
+      "children": [
+        { "name": "Shadow", "type": "shape", "rect": [4, 4, 316, 36], "fill": "{shadow}" },
+        { "name": "Box", "type": "shape", "rect": [0, 0, 316, 36], "fill": "#FFFFFF" },
+        { "name": "Label box", "type": "shape", "rect": [0, 0, 90, 36], "fill": "{panel}" },
+        { "name": "Label", "type": "text", "style": "label", "rect": [0, 0, 90, 36], "text": "{label.item}" },
+        { "name": "Value", "type": "text", "style": "value", "rect": [94, 0, 186, 36], "text": "{heldItem.name}" },
+        { "name": "Item background", "type": "shape", "rect": [282, 2, 32, 32], "radius": 4, "fill": "#E0E0EE", "visible": "{hasHeldItem}" },
+        { "name": "Item sprite", "type": "image", "rect": [282, 2, 32, 32], "image": "{heldItem.sprite}", "fit": "contain", "visible": "{hasHeldItem}" }
+      ]
+    },
+    { "name": "Artwork", "type": "image", "rect": [350, 66, 248, 248], "image": { "set": "artwork", "key": ["{pokeapi.path}", "{pokeapi.id}", "{species}"] }, "fit": "contain" },
+    { "name": "Ball", "type": "image", "rect": [548, 270, 40, 40], "image": "{ball.sprite}", "fit": "contain" },
+    {
+      "name": "Stats",
+      "type": "group",
+      "position": [0, 0],
+      "children": [
+        { "name": "EVs shadow", "type": "shape", "rect": [20, 348, 96, 44], "fill": "{shadow}" },
+        { "name": "EVs box", "type": "shape", "rect": [16, 344, 96, 44], "fill": "#FFFFFF" },
+        { "name": "EVs label", "type": "text", "style": "heading", "rect": [16, 344, 96, 44], "text": "EVs" },
+        { "name": "IVs shadow", "type": "shape", "rect": [20, 400, 96, 24], "fill": "{shadow}" },
+        { "name": "IVs box", "type": "shape", "rect": [16, 396, 96, 24], "fill": "#FFFFFF" },
+        { "name": "IVs label", "type": "text", "style": "small", "rect": [16, 396, 96, 24], "text": "IVs" },
+        { "name": "Base shadow", "type": "shape", "rect": [20, 430, 96, 24], "fill": "{shadow}" },
+        { "name": "Base box", "type": "shape", "rect": [16, 426, 96, 24], "fill": "#FFFFFF" },
+        { "name": "Base label", "type": "text", "style": "small", "rect": [16, 426, 96, 24], "text": "{label.basestats}" },
+        {
+          "name": "HP",
+          "type": "group",
+          "position": [124, 0],
+          "children": [
+            { "name": "Head", "type": "shape", "rect": [0, 318, 70, 22], "fill": "{panel}" },
+            { "name": "Head text", "type": "text", "style": "label", "rect": [0, 318, 70, 22], "text": "HP", "size": 17 },
+            { "name": "EV shadow", "type": "shape", "rect": [4, 348, 70, 44], "fill": "{shadow}" },
+            { "name": "EV box", "type": "shape", "rect": [0, 344, 70, 44], "fill": "#FFFFFF" },
+            { "name": "EV", "type": "text", "style": "number", "rect": [0, 344, 70, 44], "text": "{ev.hp:0;-0;-}" },
+            { "name": "IV box", "type": "shape", "rect": [0, 396, 70, 24], "fill": "#9C99DA" },
+            { "name": "IV", "type": "text", "style": "label", "rect": [0, 396, 70, 24], "text": "{iv.hp}", "size": 17 },
+            { "name": "Base box", "type": "shape", "rect": [0, 426, 70, 24], "fill": "{panel}" },
+            { "name": "Base", "type": "text", "style": "label", "rect": [0, 426, 70, 24], "text": "{base.hp}", "size": 17 }
+          ]
+        },
+        {
+          "name": "Atk",
+          "type": "group",
+          "position": [202, 0],
+          "children": [
+            { "name": "Head", "type": "shape", "rect": [0, 318, 70, 22], "fill": "{panel}" },
+            { "name": "Head text", "type": "text", "style": "label", "rect": [0, 318, 70, 22], "text": "Atk", "size": 17 },
+            { "name": "EV shadow", "type": "shape", "rect": [4, 348, 70, 44], "fill": "{shadow}" },
+            { "name": "EV box", "type": "shape", "rect": [0, 344, 70, 44], "fill": "#FFFFFF" },
+            { "name": "EV", "type": "text", "style": "number", "rect": [0, 344, 70, 44], "text": "{ev.atk:0;-0;-}" },
+            { "name": "IV box", "type": "shape", "rect": [0, 396, 70, 24], "fill": "#9C99DA" },
+            { "name": "IV", "type": "text", "style": "label", "rect": [0, 396, 70, 24], "text": "{iv.atk}", "size": 17 },
+            { "name": "Base box", "type": "shape", "rect": [0, 426, 70, 24], "fill": "{panel}" },
+            { "name": "Raised", "type": "shape", "rect": [0, 426, 70, 24], "fill": "#EF5350", "visible": "{nature.up.atk}" },
+            { "name": "Lowered", "type": "shape", "rect": [0, 426, 70, 24], "fill": "#2F8FEF", "visible": "{nature.down.atk}" },
+            { "name": "Base", "type": "text", "style": "label", "rect": [0, 426, 70, 24], "text": "{base.atk}", "size": 17 }
+          ]
+        },
+        {
+          "name": "Def",
+          "type": "group",
+          "position": [280, 0],
+          "children": [
+            { "name": "Head", "type": "shape", "rect": [0, 318, 70, 22], "fill": "{panel}" },
+            { "name": "Head text", "type": "text", "style": "label", "rect": [0, 318, 70, 22], "text": "Def", "size": 17 },
+            { "name": "EV shadow", "type": "shape", "rect": [4, 348, 70, 44], "fill": "{shadow}" },
+            { "name": "EV box", "type": "shape", "rect": [0, 344, 70, 44], "fill": "#FFFFFF" },
+            { "name": "EV", "type": "text", "style": "number", "rect": [0, 344, 70, 44], "text": "{ev.def:0;-0;-}" },
+            { "name": "IV box", "type": "shape", "rect": [0, 396, 70, 24], "fill": "#9C99DA" },
+            { "name": "IV", "type": "text", "style": "label", "rect": [0, 396, 70, 24], "text": "{iv.def}", "size": 17 },
+            { "name": "Base box", "type": "shape", "rect": [0, 426, 70, 24], "fill": "{panel}" },
+            { "name": "Raised", "type": "shape", "rect": [0, 426, 70, 24], "fill": "#EF5350", "visible": "{nature.up.def}" },
+            { "name": "Lowered", "type": "shape", "rect": [0, 426, 70, 24], "fill": "#2F8FEF", "visible": "{nature.down.def}" },
+            { "name": "Base", "type": "text", "style": "label", "rect": [0, 426, 70, 24], "text": "{base.def}", "size": 17 }
+          ]
+        },
+        {
+          "name": "SpA",
+          "type": "group",
+          "position": [358, 0],
+          "children": [
+            { "name": "Head", "type": "shape", "rect": [0, 318, 70, 22], "fill": "{panel}" },
+            { "name": "Head text", "type": "text", "style": "label", "rect": [0, 318, 70, 22], "text": "SpA", "size": 17 },
+            { "name": "EV shadow", "type": "shape", "rect": [4, 348, 70, 44], "fill": "{shadow}" },
+            { "name": "EV box", "type": "shape", "rect": [0, 344, 70, 44], "fill": "#FFFFFF" },
+            { "name": "EV", "type": "text", "style": "number", "rect": [0, 344, 70, 44], "text": "{ev.spa:0;-0;-}" },
+            { "name": "IV box", "type": "shape", "rect": [0, 396, 70, 24], "fill": "#9C99DA" },
+            { "name": "IV", "type": "text", "style": "label", "rect": [0, 396, 70, 24], "text": "{iv.spa}", "size": 17 },
+            { "name": "Base box", "type": "shape", "rect": [0, 426, 70, 24], "fill": "{panel}" },
+            { "name": "Raised", "type": "shape", "rect": [0, 426, 70, 24], "fill": "#EF5350", "visible": "{nature.up.spa}" },
+            { "name": "Lowered", "type": "shape", "rect": [0, 426, 70, 24], "fill": "#2F8FEF", "visible": "{nature.down.spa}" },
+            { "name": "Base", "type": "text", "style": "label", "rect": [0, 426, 70, 24], "text": "{base.spa}", "size": 17 }
+          ]
+        },
+        {
+          "name": "SpD",
+          "type": "group",
+          "position": [436, 0],
+          "children": [
+            { "name": "Head", "type": "shape", "rect": [0, 318, 70, 22], "fill": "{panel}" },
+            { "name": "Head text", "type": "text", "style": "label", "rect": [0, 318, 70, 22], "text": "SpD", "size": 17 },
+            { "name": "EV shadow", "type": "shape", "rect": [4, 348, 70, 44], "fill": "{shadow}" },
+            { "name": "EV box", "type": "shape", "rect": [0, 344, 70, 44], "fill": "#FFFFFF" },
+            { "name": "EV", "type": "text", "style": "number", "rect": [0, 344, 70, 44], "text": "{ev.spd:0;-0;-}" },
+            { "name": "IV box", "type": "shape", "rect": [0, 396, 70, 24], "fill": "#9C99DA" },
+            { "name": "IV", "type": "text", "style": "label", "rect": [0, 396, 70, 24], "text": "{iv.spd}", "size": 17 },
+            { "name": "Base box", "type": "shape", "rect": [0, 426, 70, 24], "fill": "{panel}" },
+            { "name": "Raised", "type": "shape", "rect": [0, 426, 70, 24], "fill": "#EF5350", "visible": "{nature.up.spd}" },
+            { "name": "Lowered", "type": "shape", "rect": [0, 426, 70, 24], "fill": "#2F8FEF", "visible": "{nature.down.spd}" },
+            { "name": "Base", "type": "text", "style": "label", "rect": [0, 426, 70, 24], "text": "{base.spd}", "size": 17 }
+          ]
+        },
+        {
+          "name": "Spe",
+          "type": "group",
+          "position": [514, 0],
+          "children": [
+            { "name": "Head", "type": "shape", "rect": [0, 318, 70, 22], "fill": "{panel}" },
+            { "name": "Head text", "type": "text", "style": "label", "rect": [0, 318, 70, 22], "text": "Spe", "size": 17 },
+            { "name": "EV shadow", "type": "shape", "rect": [4, 348, 70, 44], "fill": "{shadow}" },
+            { "name": "EV box", "type": "shape", "rect": [0, 344, 70, 44], "fill": "#FFFFFF" },
+            { "name": "EV", "type": "text", "style": "number", "rect": [0, 344, 70, 44], "text": "{ev.spe:0;-0;-}" },
+            { "name": "IV box", "type": "shape", "rect": [0, 396, 70, 24], "fill": "#9C99DA" },
+            { "name": "IV", "type": "text", "style": "label", "rect": [0, 396, 70, 24], "text": "{iv.spe}", "size": 17 },
+            { "name": "Base box", "type": "shape", "rect": [0, 426, 70, 24], "fill": "{panel}" },
+            { "name": "Raised", "type": "shape", "rect": [0, 426, 70, 24], "fill": "#EF5350", "visible": "{nature.up.spe}" },
+            { "name": "Lowered", "type": "shape", "rect": [0, 426, 70, 24], "fill": "#2F8FEF", "visible": "{nature.down.spe}" },
+            { "name": "Base", "type": "text", "style": "label", "rect": [0, 426, 70, 24], "text": "{base.spe}", "size": 17 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Move 1",
+      "type": "group",
+      "position": [16, 464],
+      "children": [
+        { "name": "Shadow", "type": "shape", "rect": [4, 4, 280, 46], "fill": "{shadow}" },
+        { "name": "Box", "type": "shape", "rect": [0, 0, 280, 46], "fill": "#FFFFFF" },
+        { "name": "Shape", "type": "shape", "rect": [0, 0, 46, 46], "fill": "{move1.type.color}" },
+        { "name": "Type icon", "type": "image", "rect": [0, 0, 46, 46], "image": { "set": "icons", "key": "{move1.type.key}" }, "fit": "cover", "anchor": "left" },
+        { "name": "Name", "type": "text", "style": "value", "rect": [52, 0, 222, 46], "text": "{move1.name}", "size": 23 }
+      ],
+      "visible": "{hasMove1}"
+    },
+    {
+      "name": "Move 2",
+      "type": "group",
+      "position": [304, 464],
+      "children": [
+        { "name": "Shadow", "type": "shape", "rect": [4, 4, 280, 46], "fill": "{shadow}" },
+        { "name": "Box", "type": "shape", "rect": [0, 0, 280, 46], "fill": "#FFFFFF" },
+        { "name": "Type icon", "type": "image", "rect": [0, 0, 46, 46], "image": { "set": "icons", "key": "{move2.type.key}" }, "fit": "cover", "anchor": "left" },
+        { "name": "Name", "type": "text", "style": "value", "rect": [52, 0, 222, 46], "text": "{move2.name}", "size": 23 }
+      ],
+      "visible": "{hasMove2}"
+    },
+    {
+      "name": "Move 3",
+      "type": "group",
+      "position": [16, 520],
+      "children": [
+        { "name": "Shadow", "type": "shape", "rect": [4, 4, 280, 46], "fill": "{shadow}" },
+        { "name": "Box", "type": "shape", "rect": [0, 0, 280, 46], "fill": "#FFFFFF" },
+        { "name": "Type icon", "type": "image", "rect": [0, 0, 46, 46], "image": { "set": "icons", "key": "{move3.type.key}" }, "fit": "cover", "anchor": "left" },
+        { "name": "Name", "type": "text", "style": "value", "rect": [52, 0, 222, 46], "text": "{move3.name}", "size": 23 }
+      ],
+      "visible": "{hasMove3}"
+    },
+    {
+      "name": "Move 4",
+      "type": "group",
+      "position": [304, 520],
+      "children": [
+        { "name": "Shadow", "type": "shape", "rect": [4, 4, 280, 46], "fill": "{shadow}" },
+        { "name": "Box", "type": "shape", "rect": [0, 0, 280, 46], "fill": "#FFFFFF" },
+        { "name": "Type icon", "type": "image", "rect": [0, 0, 46, 46], "image": { "set": "badges", "key": "{move4.type.key}" }, "fit": "cover", "anchor": "left" },
+        { "name": "Name", "type": "text", "style": "value", "rect": [52, 0, 222, 46], "text": "{move4.name}", "size": 23 }
+      ],
+      "visible": "{hasMove4}"
+    },
+    { "name": "Footer", "type": "shape", "rect": [0, 576, 600, 24], "fill": "{panel}" },
+    {
+      "name": "Credits",
+      "type": "text",
+      "style": "small",
+      "rect": [10, 576, 580, 24],
+      "text": "Made with PokePic · Pokémon © Nintendo, Game Freak, The Pokémon Company",
+      "color": "#FFFFFF",
+      "size": 12
+    }
+  ]
+}

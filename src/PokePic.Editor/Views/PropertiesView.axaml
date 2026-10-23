@@ -1,0 +1,153 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:props="using:PokePic.Editor.ViewModels.Properties"
+             xmlns:dock="using:PokePic.Editor.ViewModels.Docking"
+             xmlns:views="using:PokePic.Editor.Views"
+             xmlns:loc="using:PokePic.Editor.Localization"
+             x:Class="PokePic.Editor.Views.PropertiesView"
+             x:DataType="dock:PropertiesTool">
+  <UserControl.Styles>
+    <Style Selector="TextBlock.fieldLabel">
+      <Setter Property="VerticalAlignment" Value="Center" />
+      <Setter Property="Opacity" Value="0.8" />
+    </Style>
+    <Style Selector="Button.tool">
+      <Setter Property="Padding" Value="6,2" />
+      <Setter Property="MinWidth" Value="28" />
+    </Style>
+  </UserControl.Styles>
+
+  <DockPanel>
+    <Border DockPanel.Dock="Top" Padding="8,6" IsVisible="{Binding Main.Properties, Converter={x:Static ObjectConverters.IsNotNull}}">
+      <DockPanel>
+        <views:LayerIcon DockPanel.Dock="Left" Kind="{Binding Main.Properties.Type}" Width="18" Height="18" Margin="0,0,8,0"
+                         Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}" />
+        <TextBlock Text="{Binding Main.Properties.Title}" FontSize="16" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+      </DockPanel>
+    </Border>
+    <ScrollViewer x:Name="Scroll" HorizontalScrollBarVisibility="Disabled" IsEnabled="{Binding Main.CanEditVisually}">
+      <ItemsControl ItemsSource="{Binding Main.Properties.Fields}" Margin="8,0,8,8">
+        <ItemsControl.DataTemplates>
+
+          <DataTemplate DataType="props:SectionHeader">
+            <TextBlock Text="{Binding Label}" FontWeight="SemiBold" Margin="0,12,0,4" Opacity="0.9" />
+          </DataTemplate>
+
+          <DataTemplate DataType="props:InfoField">
+            <Grid ColumnDefinitions="96,*" Margin="0,2">
+              <TextBlock Classes="fieldLabel" Text="{Binding Label}" VerticalAlignment="Top" Margin="0,4,0,0" />
+              <SelectableTextBlock Grid.Column="1" Text="{Binding Text}" TextWrapping="Wrap" Opacity="0.8" Margin="0,4" />
+            </Grid>
+          </DataTemplate>
+
+          <DataTemplate DataType="props:ValueField">
+            <Grid ColumnDefinitions="96,*" Margin="0,2">
+              <TextBlock Classes="fieldLabel" Text="{Binding Label}" />
+              <Grid Grid.Column="1" ColumnDefinitions="*,Auto">
+                <TextBox IsVisible="{Binding IsSingleLine}" Text="{Binding Text}" PlaceholderText="{Binding Placeholder}" />
+                <TextBox IsVisible="{Binding IsMultiline}" Text="{Binding Text}" PlaceholderText="{Binding Placeholder}"
+                         AcceptsReturn="True" TextWrapping="Wrap" MinHeight="52" />
+                <ComboBox IsVisible="{Binding IsCombo}" IsEditable="True" HorizontalAlignment="Stretch"
+                          Text="{Binding Text, Mode=TwoWay}" ItemsSource="{Binding Suggestions}"
+                          PlaceholderText="{Binding Placeholder}" DropDownOpened="OnComboDropDownOpened" DropDownClosed="OnComboDropDownClosed" />
+                <Button Grid.Column="1" IsVisible="{Binding IsColor}" Width="26" Height="26" Padding="0" Margin="4,0,0,0"
+                        Background="{Binding Swatch}" BorderBrush="Gray" BorderThickness="1">
+                  <Button.Flyout>
+                    <Flyout Closed="OnColorFlyoutClosed">
+                      <ColorView Color="{Binding PickerColor}" />
+                    </Flyout>
+                  </Button.Flyout>
+                </Button>
+              </Grid>
+            </Grid>
+          </DataTemplate>
+
+          <DataTemplate DataType="props:TupleField">
+            <Grid ColumnDefinitions="96,*" Margin="0,2">
+              <TextBlock Classes="fieldLabel" Text="{Binding Label}" />
+              <ItemsControl Grid.Column="1" ItemsSource="{Binding Parts}">
+                <ItemsControl.ItemsPanel>
+                  <ItemsPanelTemplate>
+                    <UniformGrid Rows="1" />
+                  </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                  <DataTemplate x:DataType="props:TuplePart">
+                    <TextBox Text="{Binding Text}" PlaceholderText="{Binding Placeholder}" Margin="0,0,3,0" MinWidth="0" ToolTip.Tip="{Binding Label}" />
+                  </DataTemplate>
+                </ItemsControl.ItemTemplate>
+              </ItemsControl>
+            </Grid>
+          </DataTemplate>
+
+          <DataTemplate DataType="props:FillField">
+            <StackPanel Margin="0,2">
+              <Grid ColumnDefinitions="96,*">
+                <TextBlock Classes="fieldLabel" Text="{Binding Label}" />
+                <ComboBox Grid.Column="1" ItemsSource="{Binding Modes}" SelectedIndex="{Binding Mode}" HorizontalAlignment="Stretch" />
+              </Grid>
+              <ContentControl Content="{Binding Solid}" IsVisible="{Binding IsSolid}" />
+              <StackPanel IsVisible="{Binding IsLinear}" Margin="12,0,0,0">
+                <ContentControl Content="{Binding From}" />
+                <ContentControl Content="{Binding To}" />
+                <ItemsControl ItemsSource="{Binding Stops}">
+                  <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="props:GradientStopField">
+                      <Grid ColumnDefinitions="84,52,*,Auto,Auto" Margin="0,2">
+                        <TextBlock Classes="fieldLabel" Text="stop" />
+                        <TextBox Grid.Column="1" Text="{Binding Offset.Text}" MinWidth="0" Margin="0,0,3,0" />
+                        <TextBox Grid.Column="2" Text="{Binding Color.Text}" MinWidth="0" />
+                        <ContentControl Grid.Column="3" Content="{Binding Color}">
+                          <ContentControl.ContentTemplate>
+                            <DataTemplate x:DataType="props:ValueField">
+                              <Button Width="26" Height="26" Padding="0" Margin="4,0,0,0"
+                                      Background="{Binding Swatch}" BorderBrush="Gray" BorderThickness="1">
+                                <Button.Flyout>
+                                  <Flyout Closed="OnColorFlyoutClosed">
+                                    <ColorView Color="{Binding PickerColor}" />
+                                  </Flyout>
+                                </Button.Flyout>
+                              </Button>
+                            </DataTemplate>
+                          </ContentControl.ContentTemplate>
+                        </ContentControl>
+                        <Button Grid.Column="4" Content="✕" Classes="tool" Margin="4,0,0,0" Command="{Binding RemoveCommand}" />
+                      </Grid>
+                    </DataTemplate>
+                  </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <Button Content="{loc:Loc AddStop}" Classes="tool" Command="{Binding AddStopCommand}" Margin="84,2,0,0" />
+              </StackPanel>
+            </StackPanel>
+          </DataTemplate>
+
+          <DataTemplate DataType="props:StrokeField">
+            <StackPanel Margin="0,2">
+              <Grid ColumnDefinitions="96,*">
+                <TextBlock Classes="fieldLabel" Text="{Binding Label}" />
+                <CheckBox Grid.Column="1" IsChecked="{Binding Enabled}" />
+              </Grid>
+              <StackPanel IsVisible="{Binding ShowDetails}" Margin="12,0,0,0">
+                <ContentControl Content="{Binding Color}" />
+                <ContentControl Content="{Binding Width}" />
+              </StackPanel>
+            </StackPanel>
+          </DataTemplate>
+
+          <DataTemplate DataType="props:ImageSourceField">
+            <StackPanel Margin="0,2">
+              <Grid ColumnDefinitions="96,*">
+                <TextBlock Classes="fieldLabel" Text="{Binding Label}" />
+                <ComboBox Grid.Column="1" ItemsSource="{Binding Modes}" SelectedIndex="{Binding Mode}" HorizontalAlignment="Stretch" />
+              </Grid>
+              <ContentControl Content="{Binding Image}" IsVisible="{Binding IsValue}" />
+              <ContentControl Content="{Binding SetName}" IsVisible="{Binding IsSet}" />
+              <ContentControl Content="{Binding SetKey}" IsVisible="{Binding IsSet}" />
+            </StackPanel>
+          </DataTemplate>
+
+        </ItemsControl.DataTemplates>
+      </ItemsControl>
+    </ScrollViewer>
+  </DockPanel>
+</UserControl>

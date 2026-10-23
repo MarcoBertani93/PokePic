@@ -1,0 +1,37 @@
+{
+  "id": "artwork",
+  "version": 1,
+  "name": "Artwork",
+  "canvas": { "width": 240, "height": 320, "mode": "highResolution", "scale": 2 },
+  "values": {
+    "text": { "ARTWORK_URL": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork" },
+    "image": { "artwork": { "pattern": "{ARTWORK_URL}/{key}.png", "fallback": "artwork/unknown.png" }, "badges": { "pattern": "badges/{key}_{language}.png" } },
+    "font": { "title": "fonts/pokemon_pixel_font.ttf", "pixel": "fonts/PocketPixelRegular.ttf" }
+  },
+  "elements": [
+    {
+      "name": "Background",
+      "type": "shape",
+      "rect": [0, 0, 240, 320],
+      "radius": 14,
+      "fill": { "linear": { "from": [0, 0], "to": [240, 320], "stops": [[0, "{type1.color}"], [1, "{type2.color}"]] } }
+    },
+    { "name": "Art frame", "type": "shape", "rect": [12, 44, 216, 216], "radius": 10, "fill": "#FFFFFF", "stroke": { "color": "#00000040", "width": 2 } },
+    { "name": "Artwork", "type": "image", "rect": [18, 50, 204, 204], "image": { "set": "artwork", "key": ["{pokeapi.artwork}", "{pokeapi.id}", "{species}"] }, "fit": "contain" },
+    { "name": "Name", "type": "text", "rect": [14, 10, 160, 26], "text": "{species.name:upper}", "font": "{title}", "size": 24, "color": "#FFFFFF", "valign": "middle" },
+    {
+      "name": "Number",
+      "type": "text",
+      "rect": [160, 10, 66, 26],
+      "text": "#{species:D4}",
+      "font": "{pixel}",
+      "size": 16,
+      "color": "#FFFFFF",
+      "align": "right",
+      "valign": "middle"
+    },
+    { "name": "Type 1", "type": "image", "rect": [14, 267, 104, 23], "image": { "set": "badges", "key": "{type1.key}" }, "fit": "contain" },
+    { "name": "Type 2", "type": "image", "rect": [122, 267, 104, 23], "image": { "set": "badges", "key": "{type2.key}" }, "fit": "contain", "visible": "{hasType2}" },
+    { "name": "Level", "type": "text", "rect": [14, 296, 212, 18], "text": "Lv. {level}", "font": "{pixel}", "size": 16, "color": "#FFFFFF", "align": "right", "valign": "middle" }
+  ]
+}

@@ -1,0 +1,42 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dock="using:PokePic.Editor.ViewModels.Docking"
+             xmlns:res="using:PokePic.Editor.ViewModels.Resources"
+             xmlns:views="using:PokePic.Editor.Views"
+             xmlns:loc="using:PokePic.Editor.Localization"
+             x:Class="PokePic.Editor.Views.StylesView"
+             x:DataType="dock:StylesTool">
+  <UserControl.Styles>
+    <StyleInclude Source="avares://PokePic.Editor/Views/ResourceStyles.axaml" />
+  </UserControl.Styles>
+  <!-- Name and element type here, the properties in the Properties panel (✎). -->
+  <DockPanel x:Name="Root" Margin="6,4" IsEnabled="{Binding Main.CanEditVisually}">
+    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,4">
+      <Button Classes="tool" Content="{loc:Loc AddStyle}" Command="{Binding Main.Resources.AddStyleCommand}" />
+    </StackPanel>
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+      <ItemsControl ItemsSource="{Binding Main.Resources.Styles}">
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate><views:ColumnsPanel MinColumnWidth="260" /></ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+          <DataTemplate x:DataType="res:ResourceItem">
+            <Border Classes="item">
+              <StackPanel Spacing="2">
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                  <TextBox Classes="mono" Text="{Binding EditName}" ToolTip.Tip="{loc:Loc ResourceName}" />
+                  <Button Grid.Column="1" Classes="tool" Content="✎" Margin="3,0,0,0" Command="{Binding EditCommand}" ToolTip.Tip="{loc:Loc EditStyle}" />
+                  <Button Grid.Column="2" Classes="tool" Content="✕" Margin="3,0,0,0" Command="{Binding RemoveCommand}" />
+                </Grid>
+                <ComboBox HorizontalAlignment="Stretch" ItemsSource="{x:Static res:ResourceItem.StyleTypeChoices}"
+                          SelectedItem="{Binding SelectedStyleType}" ToolTip.Tip="{loc:Loc StyleTypeHint}" />
+                <TextBlock Classes="info" Text="{Binding Info}" />
+                <TextBlock Classes="info" Text="{Binding Detail}" />
+              </StackPanel>
+            </Border>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+    </ScrollViewer>
+  </DockPanel>
+</UserControl>

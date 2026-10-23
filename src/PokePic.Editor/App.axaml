@@ -1,0 +1,33 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dockTheme="using:Dock.Avalonia.Themes.Fluent"
+             xmlns:dock="using:PokePic.Editor.ViewModels.Docking"
+             xmlns:views="using:PokePic.Editor.Views"
+             x:Class="PokePic.Editor.App"
+             RequestedThemeVariant="Default">
+  <Application.Resources>
+    <x:Double x:Key="ControlContentThemeFontSize">12</x:Double>
+  </Application.Resources>
+
+  <Application.Styles>
+    <!-- Compact density and a 12 px base font: Fluent's defaults (14 px, touch-friendly spacing) are large for a tool UI. -->
+    <FluentTheme DensityStyle="Compact" />
+    <Style Selector="Window">
+      <Setter Property="FontSize" Value="12" />
+    </Style>
+    <dockTheme:DockFluentTheme />
+    <StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml" />
+    <StyleInclude Source="avares://Avalonia.Controls.ColorPicker/Themes/Fluent/Fluent.xaml" />
+  </Application.Styles>
+
+  <!-- Panel → view. Global, so panels keep working in floating windows. -->
+  <Application.DataTemplates>
+    <DataTemplate DataType="dock:LayersTool"><views:LayersView /></DataTemplate>
+    <DataTemplate DataType="dock:JsonTool"><views:JsonView /></DataTemplate>
+    <DataTemplate DataType="dock:PropertiesTool"><views:PropertiesView /></DataTemplate>
+    <DataTemplate DataType="dock:ProblemsTool"><views:ProblemsView /></DataTemplate>
+    <DataTemplate DataType="dock:ValuesTool"><views:ValuesView /></DataTemplate>
+    <DataTemplate DataType="dock:StylesTool"><views:StylesView /></DataTemplate>
+    <DataTemplate DataType="dock:CanvasDocument"><views:CanvasView /></DataTemplate>
+  </Application.DataTemplates>
+</Application>

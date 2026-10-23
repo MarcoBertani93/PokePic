@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AppTitle" xml:space="preserve">
+    <value>PokePic Editor</value>
+  </data>
+  <data name="MenuFile" xml:space="preserve">
+    <value>_File</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Open template…</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SaveAs" xml:space="preserve">
+    <value>Save as…</value>
+  </data>
+  <data name="ExportPng" xml:space="preserve">
+    <value>Export PNG…</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="MenuInsert" xml:space="preserve">
+    <value>_Insert</value>
+  </data>
+  <data name="InsertText" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="InsertImage" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="InsertSetImage" xml:space="preserve">
+    <value>Image from set</value>
+  </data>
+  <data name="InsertShape" xml:space="preserve">
+    <value>Shape</value>
+  </data>
+  <data name="InsertLine" xml:space="preserve">
+    <value>Line</value>
+  </data>
+  <data name="MenuSamples" xml:space="preserve">
+    <value>_Samples</value>
+  </data>
+  <data name="SampleTemplate" xml:space="preserve">
+    <value>Template: {0}</value>
+  </data>
+  <data name="SampleData" xml:space="preserve">
+    <value>Data: {0}</value>
+  </data>
+  <data name="Data" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="OpenData" xml:space="preserve">
+    <value>Open data pack…</value>
+  </data>
+  <data name="NoData" xml:space="preserve">
+    <value>No data</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>Mode</value>
+  </data>
+  <data name="ModePixelPerfect" xml:space="preserve">
+    <value>Pixel-perfect</value>
+  </data>
+  <data name="ModeHighResolution" xml:space="preserve">
+    <value>High resolution</value>
+  </data>
+  <data name="Scale" xml:space="preserve">
+    <value>Scale</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Refresh (F5)</value>
+  </data>
+  <data name="TabIssues" xml:space="preserve">
+    <value>Problems</value>
+  </data>
+  <data name="TabLayers" xml:space="preserve">
+    <value>Layers</value>
+  </data>
+  <data name="TabData" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="NoIssues" xml:space="preserve">
+    <value>No problems.</value>
+  </data>
+  <data name="LayersHint" xml:space="preserve">
+    <value>Drawing order from top to bottom: the last row is in front. Drag to reorder or into a group; Ctrl+click selects several layers; right-click to group, ungroup, copy, paste, delete (on the canvas too). F2 or double-click renames.</value>
+  </data>
+  <data name="DataReadOnly" xml:space="preserve">
+    <value>Values and images of the data pack are read-only (they come from the data pack). Double-click a key to insert it into the template.</value>
+  </data>
+  <data name="PreviewOutdated" xml:space="preserve">
+    <value>The preview is not up to date: fix the problems listed below.</value>
+  </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>Untitled</value>
+  </data>
+  <data name="StatusRendered" xml:space="preserve">
+    <value>Rendered {0}×{1} in {2} ms</value>
+  </data>
+  <data name="StatusProblems" xml:space="preserve">
+    <value>{0} problem(s) in the template</value>
+  </data>
+  <data name="StatusSaved" xml:space="preserve">
+    <value>Saved {0}</value>
+  </data>
+  <data name="StatusExported" xml:space="preserve">
+    <value>Exported {0}</value>
+  </data>
+  <data name="LineNumber" xml:space="preserve">
+    <value>Line {0}</value>
+  </data>
+  <data name="Cursor" xml:space="preserve">
+    <value>x {0}, y {1}</value>
+  </data>
+  <data name="Source" xml:space="preserve">
+    <value>source: {0}</value>
+  </data>
+  <data name="DiscardTitle" xml:space="preserve">
+    <value>Unsaved changes</value>
+  </data>
+  <data name="DiscardMessage" xml:space="preserve">
+    <value>The template has unsaved changes. Discard them?</value>
+  </data>
+  <data name="Discard" xml:space="preserve">
+    <value>Discard</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="DataPackErrors" xml:space="preserve">
+    <value>The data pack has errors:</value>
+  </data>
+  <data name="FilterTemplate" xml:space="preserve">
+    <value>PokePic template</value>
+  </data>
+  <data name="FilterDataPack" xml:space="preserve">
+    <value>PokePic data pack</value>
+  </data>
+  <data name="FilterPng" xml:space="preserve">
+    <value>PNG image</value>
+  </data>
+  <data name="MenuEdit" xml:space="preserve">
+    <value>_Edit</value>
+  </data>
+  <data name="MenuView" xml:space="preserve">
+    <value>_View</value>
+  </data>
+  <data name="Undo" xml:space="preserve">
+    <value>Undo</value>
+  </data>
+  <data name="Redo" xml:space="preserve">
+    <value>Redo</value>
+  </data>
+  <data name="Duplicate" xml:space="preserve">
+    <value>Duplicate</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Group into a folder</value>
+  </data>
+  <data name="Ungroup" xml:space="preserve">
+    <value>Ungroup</value>
+  </data>
+  <data name="GroupShort" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="UngroupShort" xml:space="preserve">
+    <value>Ungroup</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="InsertGroup" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="PanelLayers" xml:space="preserve">
+    <value>Layers</value>
+  </data>
+  <data name="PanelJson" xml:space="preserve">
+    <value>JSON</value>
+  </data>
+  <data name="PanelProperties" xml:space="preserve">
+    <value>Properties</value>
+  </data>
+  <data name="HidePanel" xml:space="preserve">
+    <value>Hide panel</value>
+  </data>
+  <data name="ZoomIn" xml:space="preserve">
+    <value>Zoom in</value>
+  </data>
+  <data name="ZoomOut" xml:space="preserve">
+    <value>Zoom out</value>
+  </data>
+  <data name="Zoom" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="ExportScale" xml:space="preserve">
+    <value>Export scale</value>
+  </data>
+  <data name="AddLayer" xml:space="preserve">
+    <value>Add layer</value>
+  </data>
+  <data name="MoveUp" xml:space="preserve">
+    <value>Move up (further back)</value>
+  </data>
+  <data name="MoveDown" xml:space="preserve">
+    <value>Move down (further forward)</value>
+  </data>
+  <data name="TemplateSettings" xml:space="preserve">
+    <value>Template</value>
+  </data>
+  <data name="AddStop" xml:space="preserve">
+    <value>+ stop</value>
+  </data>
+  <data name="AddFile" xml:space="preserve">
+    <value>+ file…</value>
+  </data>
+  <data name="VisualDisabled" xml:space="preserve">
+    <value>The JSON is not valid: fix it to edit visually.</value>
+  </data>
+  <data name="JsonInvalid" xml:space="preserve">
+    <value>Invalid JSON, visual editing disabled: {0}</value>
+  </data>
+  <data name="BoundCoordinates" xml:space="preserve">
+    <value>These coordinates are bound to data and cannot be moved with the mouse.</value>
+  </data>
+  <data name="NewGroupName" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="SaveBeforeAssets" xml:space="preserve">
+    <value>Save the template first: files are copied into its folder.</value>
+  </data>
+  <data name="FilterFont" xml:space="preserve">
+    <value>Font</value>
+  </data>
+  <data name="FilterImage" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="AddFont" xml:space="preserve">
+    <value>Add font</value>
+  </data>
+  <data name="AddImage" xml:space="preserve">
+    <value>Add image</value>
+  </data>
+  <data name="FillNone" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="FillSolid" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="FillLinear" xml:space="preserve">
+    <value>Linear gradient</value>
+  </data>
+  <data name="SourceTemplate" xml:space="preserve">
+    <value>Template image</value>
+  </data>
+  <data name="SourceData" xml:space="preserve">
+    <value>Data image</value>
+  </data>
+  <data name="SourceSet" xml:space="preserve">
+    <value>Image set</value>
+  </data>
+  <data name="Auto" xml:space="preserve">
+    <value>auto</value>
+  </data>
+  <data name="S_template" xml:space="preserve">
+    <value>Template</value>
+  </data>
+  <data name="S_canvas" xml:space="preserve">
+    <value>Canvas</value>
+  </data>
+  <data name="S_fonts" xml:space="preserve">
+    <value>Fonts</value>
+  </data>
+  <data name="S_images" xml:space="preserve">
+    <value>Images</value>
+  </data>
+  <data name="P_name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="P_version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="P_width" xml:space="preserve">
+    <value>Width</value>
+  </data>
+  <data name="P_height" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="P_mode" xml:space="preserve">
+    <value>Mode</value>
+  </data>
+  <data name="P_scale" xml:space="preserve">
+    <value>Scale</value>
+  </data>
+  <data name="P_background" xml:space="preserve">
+    <value>Background</value>
+  </data>
+  <data name="P_visible" xml:space="preserve">
+    <value>Visible</value>
+  </data>
+  <data name="P_opacity" xml:space="preserve">
+    <value>Opacity</value>
+  </data>
+  <data name="P_style" xml:space="preserve">
+    <value>Style</value>
+  </data>
+  <data name="P_position" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="P_rect" xml:space="preserve">
+    <value>Rect</value>
+  </data>
+  <data name="P_shape" xml:space="preserve">
+    <value>Shape</value>
+  </data>
+  <data name="P_radius" xml:space="preserve">
+    <value>Radius</value>
+  </data>
+  <data name="P_fill" xml:space="preserve">
+    <value>Fill</value>
+  </data>
+  <data name="P_stroke" xml:space="preserve">
+    <value>Border</value>
+  </data>
+  <data name="P_from" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="P_to" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="P_color" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="P_image" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="P_imageName" xml:space="preserve">
+    <value>Resource</value>
+  </data>
+  <data name="P_dataImage" xml:space="preserve">
+    <value>Data key</value>
+  </data>
+  <data name="P_set" xml:space="preserve">
+    <value>Set</value>
+  </data>
+  <data name="P_key" xml:space="preserve">
+    <value>Key</value>
+  </data>
+  <data name="P_fit" xml:space="preserve">
+    <value>Fit</value>
+  </data>
+  <data name="P_anchor" xml:space="preserve">
+    <value>Anchor</value>
+  </data>
+  <data name="P_flip" xml:space="preserve">
+    <value>Flip</value>
+  </data>
+  <data name="P_smooth" xml:space="preserve">
+    <value>Smooth</value>
+  </data>
+  <data name="P_text" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="P_font" xml:space="preserve">
+    <value>Font</value>
+  </data>
+  <data name="P_size" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="P_align" xml:space="preserve">
+    <value>Align</value>
+  </data>
+  <data name="P_valign" xml:space="preserve">
+    <value>Vertical align</value>
+  </data>
+  <data name="P_lineHeight" xml:space="preserve">
+    <value>Line height</value>
+  </data>
+  <data name="PanelCanvas" xml:space="preserve">
+    <value>Card</value>
+  </data>
+  <data name="ResetLayout" xml:space="preserve">
+    <value>Reset panel layout</value>
+  </data>
+  <data name="LayoutNotRestored" xml:space="preserve">
+    <value>Saved layout not restored ({0}): using the default one.</value>
+  </data>
+  <data name="LayoutNotSaved" xml:space="preserve">
+    <value>Layout not saved: {0}</value>
+  </data>
+  <data name="TextLanguage" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="TextLanguageHint" xml:space="preserve">
+    <value>The language of whoever uses the card, given by the data pack. Localized texts and images use it, unless the template or an element forces another one. Here you can try another one; missing languages fall back to English.</value>
+  </data>
+  <data name="P_language" xml:space="preserve">
+    <value>Force language</value>
+  </data>
+  <data name="LanguageDefault" xml:space="preserve">
+    <value>from the data pack</value>
+  </data>
+  <data name="LanguageTemplate" xml:space="preserve">
+    <value>as the template</value>
+  </data>
+  <data name="P_keys" xml:space="preserve">
+    <value>Keys</value>
+  </data>
+  <data name="KeysPlaceholder" xml:space="preserve">
+    <value>one candidate per line, e.g. {species:D4}-{form}</value>
+  </data>
+  <data name="MixedValues" xml:space="preserve">
+    <value>{multiple values}</value>
+  </data>
+  <data name="MixedValuesShort" xml:space="preserve">
+    <value>{…}</value>
+  </data>
+  <data name="P_names" xml:space="preserve">
+    <value>Elements</value>
+  </data>
+  <data name="SelectedCount" xml:space="preserve">
+    <value>{0} elements selected</value>
+  </data>
+  <data name="S_variables" xml:space="preserve">
+    <value>Variables</value>
+  </data>
+  <data name="CanvasSize" xml:space="preserve">
+    <value>Canvas size (template pixels)</value>
+  </data>
+  <data name="CursorPosition" xml:space="preserve">
+    <value>Cursor position on the canvas</value>
+  </data>
+  <data name="ZoomFit" xml:space="preserve">
+    <value>Zoom to window</value>
+  </data>
+  <data name="ActualSize" xml:space="preserve">
+    <value>Actual size (100%)</value>
+  </data>
+  <data name="ZoomFitToggle" xml:space="preserve">
+    <value>Zoom to window / actual size</value>
+  </data>
+  <data name="TabResources" xml:space="preserve">
+    <value>Resources</value>
+  </data>
+  <data name="S_imageSets" xml:space="preserve">
+    <value>Image sets</value>
+  </data>
+  <data name="ResourceUnavailable" xml:space="preserve">
+    <value>Not available: fix the template errors first.</value>
+  </data>
+  <data name="VariableAlias" xml:space="preserve">
+    <value>alias</value>
+  </data>
+  <data name="VariableText" xml:space="preserve">
+    <value>composition</value>
+  </data>
+  <data name="VariableConstant" xml:space="preserve">
+    <value>constant</value>
+  </data>
+  <data name="FontNotInstalled" xml:space="preserve">
+    <value>This font is not installed on this computer.</value>
+  </data>
+  <data name="NotAFont" xml:space="preserve">
+    <value>Not a valid font file.</value>
+  </data>
+  <data name="NotAnImage" xml:space="preserve">
+    <value>Not a valid image file.</value>
+  </data>
+  <data name="SetOnWeb" xml:space="preserve">
+    <value>web: files are checked when used</value>
+  </data>
+  <data name="SetFileCount" xml:space="preserve">
+    <value>{0} files</value>
+  </data>
+  <data name="AddVariable" xml:space="preserve">
+    <value>Add a variable</value>
+  </data>
+  <data name="AddImageSet" xml:space="preserve">
+    <value>Add an image set</value>
+  </data>
+  <data name="ResourceName" xml:space="preserve">
+    <value>Name, used in the template</value>
+  </data>
+  <data name="VariableValueHint" xml:space="preserve">
+    <value>A binding ({type1.color}), a text with bindings ({species.name} Lv. {level}), a number, true/false or a color</value>
+  </data>
+  <data name="FontFileHint" xml:space="preserve">
+    <value>File (relative to the template, file:// or http(s)://) or system:Family</value>
+  </data>
+  <data name="ImageFileHint" xml:space="preserve">
+    <value>File: relative to the template, file:// or http(s)://. Can use variables: {BASE}/frame.png</value>
+  </data>
+  <data name="SetSampleHint" xml:space="preserve">
+    <value>The fallback, or the first file of the set</value>
+  </data>
+  <data name="SetPatternHint" xml:space="preserve">
+    <value>Where the files are: {key} is replaced by the key. Relative, file:// or http(s)://; can use variables.</value>
+  </data>
+  <data name="SetFallbackPlaceholder" xml:space="preserve">
+    <value>fallback (optional)</value>
+  </data>
+  <data name="SetFallbackHint" xml:space="preserve">
+    <value>Image used when no key has a file</value>
+  </data>
+  <data name="DataSamples" xml:space="preserve">
+    <value>Samples</value>
+  </data>
+  <data name="ExportNeedsValidTemplate" xml:space="preserve">
+    <value>Fix the problems of the template before exporting: mode and scale of the PNG are the template's.</value>
+  </data>
+  <data name="PreviewLanguage" xml:space="preserve">
+    <value>Preview language</value>
+  </data>
+  <data name="PreviewLanguageHint" xml:space="preserve">
+    <value>Language of localized texts and images in the preview and in the export. auto: the template's language if it has one, else the data pack's, else English. Another language wins over the template's, to try the graphics in that language (the template and the pack do not change); an element that forces its own language keeps it.</value>
+  </data>
+  <data name="LanguageFromPack" xml:space="preserve">
+    <value>from the data pack ({0})</value>
+  </data>
+  <data name="LanguageNotSet" xml:space="preserve">
+    <value>not set: {0}</value>
+  </data>
+  <data name="DataLanguageHint" xml:space="preserve">
+    <value>Language of whoever uses the card, written in the data pack. To try another one use Preview language.</value>
+  </data>
+  <data name="S_styles" xml:space="preserve">
+    <value>Styles</value>
+  </data>
+  <data name="AddStyle" xml:space="preserve">
+    <value>Add a style</value>
+  </data>
+  <data name="EditStyle" xml:space="preserve">
+    <value>Edit the style in the Properties panel</value>
+  </data>
+  <data name="StyleTypeHint" xml:space="preserve">
+    <value>The type of elements the style is for: it can set all their properties. Any element: only visibility and opacity.</value>
+  </data>
+  <data name="StyleAnyType" xml:space="preserve">
+    <value>any element</value>
+  </data>
+  <data name="StyleEmpty" xml:space="preserve">
+    <value>no properties</value>
+  </data>
+  <data name="StyleUses" xml:space="preserve">
+    <value>used by {0} elements</value>
+  </data>
+  <data name="P_styleType" xml:space="preserve">
+    <value>For</value>
+  </data>
+  <data name="P_overflow" xml:space="preserve">
+    <value>Overflow</value>
+  </data>
+  <data name="P_ellipsis" xml:space="preserve">
+    <value>Ellipsis</value>
+  </data>
+  <data name="Cut" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="Paste" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="PasteNotElements" xml:space="preserve">
+    <value>The clipboard does not contain template elements (a JSON element or array of elements).</value>
+  </data>
+  <data name="ScaleOnlyWithFit" xml:space="preserve">
+    <value>1 (with fit: scale)</value>
+  </data>
+  <data name="LanguageAuto" xml:space="preserve">
+    <value>auto</value>
+  </data>
+  <data name="S_texts" xml:space="preserve">
+    <value>Texts</value>
+  </data>
+  <data name="AddText" xml:space="preserve">
+    <value>Add a text</value>
+  </data>
+  <data name="AddLanguage" xml:space="preserve">
+    <value>+ Language</value>
+  </data>
+  <data name="NewLanguageHint" xml:space="preserve">
+    <value>Language code of a new column (it, fr, ja, zh-Hans…): the JSON changes when a cell is filled</value>
+  </data>
+  <data name="TextsHint" xml:space="preserve">
+    <value>Each row is a variable, used as {name}. An empty cell uses the base language, then English.</value>
+  </data>
+  <data name="ResourceNameShort" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="RemoveLanguageHint" xml:space="preserve">
+    <value>Remove this language from every text</value>
+  </data>
+  <data name="TextPreviewHint" xml:space="preserve">
+    <value>The text in the preview language, with the current data</value>
+  </data>
+  <data name="LocalizeVariable" xml:space="preserve">
+    <value>Translate: turn it into a localized text (Localized texts panel)</value>
+  </data>
+  <data name="S_valueSets" xml:space="preserve">
+    <value>Value sets</value>
+  </data>
+  <data name="AddValueSet" xml:space="preserve">
+    <value>Add a value set</value>
+  </data>
+  <data name="AddSetValue" xml:space="preserve">
+    <value>+ Key</value>
+  </data>
+  <data name="SetKey" xml:space="preserve">
+    <value>Key: a value of the data, e.g. "fire" for {move1.type.key}</value>
+  </data>
+  <data name="SetValueLocalizedHint" xml:space="preserve">
+    <value>Text in several languages: edit it in the JSON</value>
+  </data>
+  <data name="SetValueFallbackPlaceholder" xml:space="preserve">
+    <value>fallback (empty: a missing key is an error)</value>
+  </data>
+  <data name="ValueSetsHint" xml:space="preserve">
+    <value>Used as {set[key]}, e.g. {typeColor[move1.type.key]}. All values have the same kind.</value>
+  </data>
+  <data name="S_numbers" xml:space="preserve">
+    <value>Numbers</value>
+  </data>
+  <data name="S_bools" xml:space="preserve">
+    <value>True/false</value>
+  </data>
+  <data name="S_colors" xml:space="preserve">
+    <value>Colors</value>
+  </data>
+  <data name="TabValues" xml:space="preserve">
+    <value>Values</value>
+  </data>
+  <data name="ValuesFromData" xml:space="preserve">
+    <value>Data pack</value>
+  </data>
+  <data name="ValuesFromDataHint" xml:space="preserve">
+    <value>Values of the data pack, in the preview language (read-only). Double-click: insert "{key}" in the JSON.</value>
+  </data>
+  <data name="ValuesFromTemplate" xml:space="preserve">
+    <value>Template</value>
+  </data>
+  <data name="ValuesHint" xml:space="preserve">
+    <value>Each value is used as {name}, a set as {name[key]}. A cell holds a literal, a reference such as {level} or, for texts, images and fonts, a composition such as {BASE}/{species}.png. An empty language uses the base language, then English.</value>
+  </data>
+  <data name="AddValue" xml:space="preserve">
+    <value>+ Value</value>
+  </data>
+  <data name="AddInt" xml:space="preserve">
+    <value>+ Integer</value>
+  </data>
+  <data name="AddFloat" xml:space="preserve">
+    <value>+ Decimal</value>
+  </data>
+  <data name="FormSingle" xml:space="preserve">
+    <value>Single</value>
+  </data>
+  <data name="FormItems" xml:space="preserve">
+    <value>Set</value>
+  </data>
+  <data name="FormPattern" xml:space="preserve">
+    <value>Pattern</value>
+  </data>
+  <data name="FormHint" xml:space="preserve">
+    <value>Single: one value (by language too). Set: a value per key, used as {name[key]}. Pattern: a path or text built from the key, e.g. art/{key}.png.</value>
+  </data>
+  <data name="RowFallback" xml:space="preserve">
+    <value>fallback</value>
+  </data>
+  <data name="RowPattern" xml:space="preserve">
+    <value>pattern</value>
+  </data>
+  <data name="InsertValueHint" xml:space="preserve">
+    <value>Insert {name} in the JSON, where the caret is</value>
+  </data>
+  <data name="DataImage" xml:space="preserve">
+    <value>image of the data pack</value>
+  </data>
+  <data name="SourceValue" xml:space="preserve">
+    <value>Value or path</value>
+  </data>
+  <data name="P_imageValue" xml:space="preserve">
+    <value>Image</value>
+  </data>
+</root>

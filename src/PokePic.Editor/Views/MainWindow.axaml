@@ -1,0 +1,111 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:PokePic.Editor.ViewModels"
+        xmlns:dockControls="using:Dock.Avalonia.Controls"
+        xmlns:loc="using:PokePic.Editor.Localization"
+        x:Class="PokePic.Editor.Views.MainWindow"
+        x:DataType="vm:MainViewModel"
+        Title="{Binding Title}"
+        Width="1520" Height="900"
+        WindowStartupLocation="CenterScreen">
+
+  <Window.KeyBindings>
+    <KeyBinding Gesture="Ctrl+N" Command="{Binding NewCommand}" />
+    <KeyBinding Gesture="Ctrl+O" Command="{Binding OpenCommand}" />
+    <KeyBinding Gesture="Ctrl+S" Command="{Binding SaveCommand}" />
+    <KeyBinding Gesture="Ctrl+Shift+S" Command="{Binding SaveAsCommand}" />
+    <KeyBinding Gesture="Ctrl+E" Command="{Binding ExportPngCommand}" />
+    <KeyBinding Gesture="Ctrl+Z" Command="{Binding UndoCommand}" />
+    <KeyBinding Gesture="Ctrl+Y" Command="{Binding RedoCommand}" />
+    <KeyBinding Gesture="Ctrl+Shift+Z" Command="{Binding RedoCommand}" />
+    <KeyBinding Gesture="Ctrl+D" Command="{Binding DuplicateLayerCommand}" />
+    <KeyBinding Gesture="Ctrl+G" Command="{Binding GroupLayerCommand}" />
+    <KeyBinding Gesture="Ctrl+Shift+G" Command="{Binding UngroupLayerCommand}" />
+    <KeyBinding Gesture="Ctrl+OemPlus" Command="{Binding ZoomInCommand}" />
+    <KeyBinding Gesture="Ctrl+OemMinus" Command="{Binding ZoomOutCommand}" />
+    <KeyBinding Gesture="Ctrl+B" Command="{Binding FitToWindowCommand}" />
+    <KeyBinding Gesture="Ctrl+D0" Command="{Binding ActualSizeCommand}" />
+    <KeyBinding Gesture="F5" Command="{Binding RefreshCommand}" />
+  </Window.KeyBindings>
+
+  <DockPanel>
+    <Menu DockPanel.Dock="Top">
+      <MenuItem Header="{loc:Loc MenuFile}">
+        <MenuItem Header="{loc:Loc New}" InputGesture="Ctrl+N" Command="{Binding NewCommand}" />
+        <MenuItem Header="{loc:Loc Open}" InputGesture="Ctrl+O" Command="{Binding OpenCommand}" />
+        <MenuItem Header="{loc:Loc Save}" InputGesture="Ctrl+S" Command="{Binding SaveCommand}" />
+        <MenuItem Header="{loc:Loc SaveAs}" InputGesture="Ctrl+Shift+S" Command="{Binding SaveAsCommand}" />
+        <Separator />
+        <MenuItem Header="{loc:Loc ExportPng}" InputGesture="Ctrl+E" Command="{Binding ExportPngCommand}" />
+        <Separator />
+        <MenuItem Header="{loc:Loc Exit}" Click="OnExitClick" />
+      </MenuItem>
+      <MenuItem Header="{loc:Loc MenuEdit}">
+        <MenuItem Header="{loc:Loc Undo}" InputGesture="Ctrl+Z" Command="{Binding UndoCommand}" />
+        <MenuItem Header="{loc:Loc Redo}" InputGesture="Ctrl+Y" Command="{Binding RedoCommand}" />
+        <Separator />
+        <MenuItem Header="{loc:Loc Duplicate}" InputGesture="Ctrl+D" Command="{Binding DuplicateLayerCommand}" />
+        <MenuItem Header="{loc:Loc Group}" InputGesture="Ctrl+G" Command="{Binding GroupLayerCommand}" />
+        <MenuItem Header="{loc:Loc Ungroup}" InputGesture="Ctrl+Shift+G" Command="{Binding UngroupLayerCommand}" />
+        <MenuItem Header="{loc:Loc Delete}" InputGesture="Delete" Command="{Binding DeleteLayerCommand}" />
+      </MenuItem>
+      <MenuItem Header="{loc:Loc MenuInsert}">
+        <MenuItem Header="{loc:Loc InsertGroup}" Command="{Binding AddLayerCommand}" CommandParameter="group" />
+        <MenuItem Header="{loc:Loc InsertShape}" Command="{Binding AddLayerCommand}" CommandParameter="shape" />
+        <MenuItem Header="{loc:Loc InsertText}" Command="{Binding AddLayerCommand}" CommandParameter="text" />
+        <MenuItem Header="{loc:Loc InsertImage}" Command="{Binding AddLayerCommand}" CommandParameter="image" />
+        <MenuItem Header="{loc:Loc InsertLine}" Command="{Binding AddLayerCommand}" CommandParameter="line" />
+      </MenuItem>
+      <MenuItem Header="{loc:Loc MenuView}">
+        <MenuItem Header="{loc:Loc PanelLayers}" ToggleType="CheckBox" IsChecked="{Binding ShowLayers, Mode=TwoWay}" />
+        <MenuItem Header="{loc:Loc PanelJson}" ToggleType="CheckBox" IsChecked="{Binding ShowJson, Mode=TwoWay}" />
+        <MenuItem Header="{loc:Loc PanelProperties}" ToggleType="CheckBox" IsChecked="{Binding ShowProperties, Mode=TwoWay}" />
+        <MenuItem Header="{loc:Loc TabIssues}" ToggleType="CheckBox" IsChecked="{Binding ShowProblems, Mode=TwoWay}" />
+        <MenuItem Header="{loc:Loc TabValues}">
+          <MenuItem Header="{loc:Loc S_texts}" ToggleType="CheckBox" IsChecked="{Binding ShowTextValues, Mode=TwoWay}" />
+          <MenuItem Header="{loc:Loc S_numbers}" ToggleType="CheckBox" IsChecked="{Binding ShowNumberValues, Mode=TwoWay}" />
+          <MenuItem Header="{loc:Loc S_bools}" ToggleType="CheckBox" IsChecked="{Binding ShowBoolValues, Mode=TwoWay}" />
+          <MenuItem Header="{loc:Loc S_colors}" ToggleType="CheckBox" IsChecked="{Binding ShowColorValues, Mode=TwoWay}" />
+          <MenuItem Header="{loc:Loc S_images}" ToggleType="CheckBox" IsChecked="{Binding ShowImageValues, Mode=TwoWay}" />
+          <MenuItem Header="{loc:Loc S_fonts}" ToggleType="CheckBox" IsChecked="{Binding ShowFontValues, Mode=TwoWay}" />
+        </MenuItem>
+        <MenuItem Header="{loc:Loc S_styles}" ToggleType="CheckBox" IsChecked="{Binding ShowStyles, Mode=TwoWay}" />
+        <Separator />
+        <MenuItem Header="{loc:Loc ResetLayout}" Command="{Binding ResetLayoutCommand}" />
+        <Separator />
+        <MenuItem Header="{loc:Loc ZoomIn}" InputGesture="Ctrl+OemPlus" Command="{Binding ZoomInCommand}" />
+        <MenuItem Header="{loc:Loc ZoomOut}" InputGesture="Ctrl+OemMinus" Command="{Binding ZoomOutCommand}" />
+        <MenuItem Header="{loc:Loc ZoomFit}" InputGesture="Ctrl+B" Command="{Binding FitToWindowCommand}" />
+        <MenuItem Header="{loc:Loc ActualSize}" InputGesture="Ctrl+D0" Command="{Binding ActualSizeCommand}" />
+      </MenuItem>
+      <MenuItem x:Name="SamplesMenu" Header="{loc:Loc MenuSamples}" />
+    </Menu>
+
+    <Border DockPanel.Dock="Top" Padding="8,6" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}">
+      <WrapPanel Orientation="Horizontal">
+        <!-- The data pack the preview uses (read-only: it comes from PKHeX or from a file). -->
+        <TextBlock Text="{loc:Loc Data}" VerticalAlignment="Center" FontWeight="SemiBold" Margin="0,0,6,0" ToolTip.Tip="{loc:Loc DataReadOnly}" />
+        <TextBlock Text="{Binding DataDescription}" VerticalAlignment="Center" MaxWidth="320" TextTrimming="CharacterEllipsis" Margin="0,0,6,0"
+                   ToolTip.Tip="{Binding DataDescription}" />
+        <TextBlock Text="{Binding DataLanguageText}" VerticalAlignment="Center" Opacity="0.7" Margin="0,0,6,0" ToolTip.Tip="{loc:Loc DataLanguageHint}" />
+        <Button Content="{loc:Loc OpenData}" Command="{Binding OpenDataCommand}" Margin="0,0,16,0" />
+        <TextBlock Text="{loc:Loc PreviewLanguage}" VerticalAlignment="Center" FontWeight="SemiBold" Margin="0,0,6,0" ToolTip.Tip="{loc:Loc PreviewLanguageHint}" />
+        <ComboBox ItemsSource="{Binding PreviewLanguages}" SelectedItem="{Binding PreviewLanguage}" MinWidth="150" Margin="0,0,8,0" ToolTip.Tip="{loc:Loc PreviewLanguageHint}" />
+        <Button Content="{loc:Loc Refresh}" Command="{Binding RefreshCommand}" Margin="0,0,8,0" />
+        <Button Content="{loc:Loc ExportPng}" Command="{Binding ExportPngCommand}" Classes="accent" />
+      </WrapPanel>
+    </Border>
+
+    <Border DockPanel.Dock="Bottom" Padding="8,3" BorderThickness="0,1,0,0" BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}">
+      <DockPanel>
+        <TextBlock Text="{Binding Status}" TextTrimming="CharacterEllipsis" />
+      </DockPanel>
+    </Border>
+
+    <dockControls:DockControl x:Name="DockHost"
+                              Factory="{Binding DockFactory}"
+                              Layout="{Binding DockLayout}"
+                              InitializeFactory="True"
+                              InitializeLayout="True" />
+  </DockPanel>
+</Window>

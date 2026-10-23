@@ -1,0 +1,3 @@
+Type badges of Pokémon Sword / Shield (© Nintendo, Game Freak), from The Spriters Resource
+(ripped by Random Talking Bush). Sliced from the sheet as {type}_{language}.png.
+For illustrative purposes only: they do not belong to the author of PokePic (see the Disclaimer in README.md).

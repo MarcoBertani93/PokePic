@@ -1,0 +1,15 @@
+{
+  "id": "example-errors",
+  "version": 1,
+  "name": "Badge",
+  "canvas": { "width": 128, "height": 48, "mode": "pixelPerfect", "scale": 3, "background": "#2E3445" },
+  "values": { "font": { "pixel": "fonts/PocketPixelRegular.ttf", "title": "fonts/pokemon_pixel_font.ttf" } },
+  "elements": [
+    { "name": "Header", "type": "shape", "rect": [0, 0, 128, 14], "fill": "{type1.color}" },
+    { "name": "Name", "type": "text", "rect": [4, 0, 80, 14], "text": "{species.name}", "valign": "middle", "font": "{title}", "size": 16, "color": "#FFFFFF" },
+    { "name": "Level", "type": "text", "rect": [84, 0, 40, 14], "text": "Lv{level:D3}", "valign": "middle", "font": "{pixel}", "size": 8, "color": "#FFFFFF", "align": "center" },
+    { "name": "Sprite", "type": "image", "rect": [4, 16, 40, 30], "image": "{species.sprite}", "fit": "none", "overflow": "crop" },
+    { "name": "HP IV bar", "type": "shape", "rect": [50, 20, "{iv.hp}", 6], "fill": "#FFFFFF" },
+    { "name": "Shiny", "type": "text", "rect": [50, 32, 74, 12], "text": "SHINY", "font": "{pixel}", "size": 8, "visible": "{isShiny}" }
+  ]
+}

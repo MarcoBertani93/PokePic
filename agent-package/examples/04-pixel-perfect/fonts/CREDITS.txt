@@ -1,0 +1,9 @@
+Pocket Pixel (PocketPixelRegular.ttf)
+  Copyright 2011 stuck-in-suburbia, made with FontStruct: http://fontstruct.com/fontstructions/show/460205
+  License: Creative Commons Attribution-ShareAlike 3.0, https://creativecommons.org/licenses/by-sa/3.0/
+
+Pokemon Pixel Font (pokemon_pixel_font.ttf)
+  Copyright 2010 SpyroSteak, made with FontStruct: http://fontstruct.fontshop.com/fontstructions/show/299827
+  License: Creative Commons Attribution-ShareAlike 3.0, https://creativecommons.org/licenses/by-sa/3.0/
+
+Both fonts are unmodified. They contain only unaccented Latin letters, digits and basic punctuation.

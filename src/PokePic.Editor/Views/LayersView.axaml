@@ -1,0 +1,70 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:PokePic.Editor.ViewModels"
+             xmlns:dock="using:PokePic.Editor.ViewModels.Docking"
+             xmlns:views="using:PokePic.Editor.Views"
+             xmlns:loc="using:PokePic.Editor.Localization"
+             x:Class="PokePic.Editor.Views.LayersView"
+             x:DataType="dock:LayersTool">
+  <UserControl.Styles>
+    <Style Selector="Button.tool">
+      <Setter Property="Padding" Value="6,2" />
+      <Setter Property="MinWidth" Value="28" />
+      <Setter Property="Margin" Value="0,0,2,2" />
+    </Style>
+  </UserControl.Styles>
+
+  <DockPanel>
+    <WrapPanel DockPanel.Dock="Top" Margin="4" IsEnabled="{Binding Main.CanEditVisually}">
+      <Button Content="＋" Classes="tool" ToolTip.Tip="{loc:Loc AddLayer}">
+        <Button.Flyout>
+          <MenuFlyout Placement="BottomEdgeAlignedLeft">
+            <MenuItem Header="{loc:Loc InsertGroup}" Command="{Binding Main.AddLayerCommand}" CommandParameter="group">
+              <MenuItem.Icon><views:LayerIcon Kind="group" /></MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="{loc:Loc InsertShape}" Command="{Binding Main.AddLayerCommand}" CommandParameter="shape">
+              <MenuItem.Icon><views:LayerIcon Kind="shape" /></MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="{loc:Loc InsertText}" Command="{Binding Main.AddLayerCommand}" CommandParameter="text">
+              <MenuItem.Icon><views:LayerIcon Kind="text" Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}" /></MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="{loc:Loc InsertImage}" Command="{Binding Main.AddLayerCommand}" CommandParameter="image">
+              <MenuItem.Icon><views:LayerIcon Kind="image" /></MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="{loc:Loc InsertLine}" Command="{Binding Main.AddLayerCommand}" CommandParameter="line">
+              <MenuItem.Icon><views:LayerIcon Kind="line" /></MenuItem.Icon>
+            </MenuItem>
+          </MenuFlyout>
+        </Button.Flyout>
+      </Button>
+      <Button Content="⧉" Classes="tool" Command="{Binding Main.DuplicateLayerCommand}" ToolTip.Tip="{loc:Loc Duplicate}" />
+      <Button Content="▲" Classes="tool" Command="{Binding Main.MoveLayerUpCommand}" ToolTip.Tip="{loc:Loc MoveUp}" />
+      <Button Content="▼" Classes="tool" Command="{Binding Main.MoveLayerDownCommand}" ToolTip.Tip="{loc:Loc MoveDown}" />
+
+    </WrapPanel>
+    <TextBlock DockPanel.Dock="Bottom" Text="{loc:Loc LayersHint}" Margin="8,4" Opacity="0.6" FontSize="11" TextWrapping="Wrap" />
+    <TreeView x:Name="LayersTree" ItemsSource="{Binding Main.Layers}" SelectionMode="Multiple">
+      <TreeView.Styles>
+        <Style Selector="TreeViewItem" x:DataType="vm:LayerNode">
+          <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+          <Setter Property="MinHeight" Value="26" />
+        </Style>
+      </TreeView.Styles>
+      <TreeView.ItemTemplate>
+        <TreeDataTemplate DataType="vm:LayerNode" ItemsSource="{Binding Children}">
+          <Grid Classes="layerRow" Background="Transparent" ColumnDefinitions="Auto,Auto,*" MinHeight="24">
+            <Border Grid.ColumnSpan="3" BorderBrush="#009CFF" BorderThickness="0,2,0,0" IsVisible="{Binding DropAbove}" />
+            <Border Grid.ColumnSpan="3" BorderBrush="#009CFF" BorderThickness="0,0,0,2" IsVisible="{Binding DropBelow}" />
+            <Border Grid.ColumnSpan="3" BorderBrush="#009CFF" BorderThickness="1" Background="#30009CFF" IsVisible="{Binding DropInto}" />
+            <CheckBox IsChecked="{Binding IsVisible}" IsEnabled="{Binding CanToggleVisible}" MinWidth="0" Padding="0" Margin="0,0,4,0"
+                      ToolTip.Tip="{Binding VisibleBinding}" />
+            <views:LayerIcon Grid.Column="1" Kind="{Binding Type}" Margin="0,0,6,0" VerticalAlignment="Center"
+                             Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}" />
+            <TextBlock Grid.Column="2" Text="{Binding Name}" VerticalAlignment="Center" IsVisible="{Binding !IsEditing}" TextTrimming="CharacterEllipsis" />
+            <TextBox Grid.Column="2" Classes="rename" Text="{Binding Name, Mode=OneWay}" IsVisible="{Binding IsEditing}" MinHeight="22" Padding="4,1" />
+          </Grid>
+        </TreeDataTemplate>
+      </TreeView.ItemTemplate>
+    </TreeView>
+  </DockPanel>
+</UserControl>

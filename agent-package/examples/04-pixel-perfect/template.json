@@ -1,0 +1,115 @@
+{
+  "id": "example-pixel",
+  "version": 1,
+  "name": "Pixel summary",
+  "canvas": { "width": 176, "height": 112, "mode": "pixelPerfect", "scale": 4, "background": "#2E3445" },
+  "values": {
+    "color": { "PANEL": "#F8F8F0", "INK": "#2E3445", "TRACK": "#C8CCD8", "BAR": "#58D068", "UP": "#E04040", "DOWN": "#4070E0" },
+    "image": { "typeIcon": { "pattern": "types/{key}.png" }, "male": "images/gender_male.png", "female": "images/gender_female.png", "neutral": "images/gender_neutral.png" },
+    "font": { "title": "fonts/pokemon_pixel_font.ttf", "pixel": "fonts/PocketPixelRegular.ttf" }
+  },
+  "styles": {
+    "label": { "type": "text", "font": "{pixel}", "size": 8, "color": "{INK}", "valign": "middle" },
+    "track": { "type": "shape", "fill": "{TRACK}" },
+    "bar": { "type": "shape", "fill": "{BAR}" },
+    "up": { "type": "text", "font": "{pixel}", "size": 8, "color": "{UP}", "valign": "middle", "text": "+" },
+    "down": { "type": "text", "font": "{pixel}", "size": 8, "color": "{DOWN}", "valign": "middle", "text": "-" }
+  },
+  "elements": [
+    { "name": "Header", "type": "shape", "rect": [0, 0, 176, 15], "fill": "{type1.color}" },
+    {
+      "name": "Nickname",
+      "type": "text",
+      "rect": [4, 0, 110, 15],
+      "text": "{nickname}",
+      "font": "{title}",
+      "size": 16,
+      "color": "#FFFFFF",
+      "valign": "middle",
+      "overflow": "ellipsis",
+      "ellipsis": "."
+    },
+    { "name": "Level", "type": "text", "rect": [116, 0, 56, 15], "text": "Lv{level}", "font": "{title}", "size": 16, "color": "#FFFFFF", "align": "right", "valign": "middle" },
+    { "name": "Portrait", "type": "shape", "rect": [4, 19, 72, 72], "fill": "{PANEL}", "stroke": { "color": "{type1.color}", "width": 1 } },
+    { "name": "Sprite", "type": "image", "rect": [6, 21, 68, 56], "image": "{species.sprite}", "fit": "none" },
+    { "name": "Ball", "type": "image", "rect": [6, 69, 20, 20], "image": "{ball.sprite}", "fit": "none" },
+    { "name": "Male", "type": "image", "rect": [60, 75, 13, 13], "image": "{male}", "visible": "{gender.isMale}" },
+    { "name": "Female", "type": "image", "rect": [60, 75, 13, 13], "image": "{female}", "visible": "{gender.isFemale}" },
+    { "name": "Genderless", "type": "image", "rect": [60, 75, 13, 13], "image": "{neutral}", "visible": "{gender.isNeutral}" },
+    { "name": "Dex number", "type": "text", "rect": [4, 94, 72, 14], "text": "No.{species:D4}", "font": "{pixel}", "size": 8, "color": "#FFFFFF", "valign": "middle" },
+    {
+      "name": "Types",
+      "type": "group",
+      "position": [82, 19],
+      "children": [
+        { "name": "Type 1 icon", "type": "image", "rect": [0, 0, 10, 10], "image": { "set": "typeIcon", "key": "{type1.key}" } },
+        {
+          "name": "Type 1 name",
+          "type": "text",
+          "rect": [12, 0, 32, 10],
+          "text": "{type1.name:upper}",
+          "font": "{pixel}",
+          "size": 8,
+          "color": "#FFFFFF",
+          "valign": "middle",
+          "overflow": "crop"
+        },
+        { "name": "Type 2 icon", "type": "image", "rect": [44, 0, 10, 10], "image": { "set": "typeIcon", "key": "{type2.key}" }, "visible": "{hasType2}" },
+        {
+          "name": "Type 2 name",
+          "type": "text",
+          "rect": [56, 0, 38, 10],
+          "text": "{type2.name:upper}",
+          "font": "{pixel}",
+          "size": 8,
+          "color": "#FFFFFF",
+          "valign": "middle",
+          "overflow": "crop",
+          "visible": "{hasType2}"
+        }
+      ]
+    },
+    {
+      "name": "IVs",
+      "type": "group",
+      "position": [82, 33],
+      "children": [
+        { "name": "Panel", "type": "shape", "rect": [0, 0, 90, 75], "fill": "{PANEL}" },
+        { "name": "HP label", "type": "text", "style": "label", "rect": [3, 2, 30, 10], "text": "HP" },
+        { "name": "HP track", "type": "shape", "style": "track", "rect": [42, 6, 31, 3] },
+        { "name": "HP bar", "type": "shape", "style": "bar", "rect": [42, 6, "{iv.hp}", 3] },
+        { "name": "HP value", "type": "text", "style": "label", "rect": [75, 2, 13, 10], "text": "{iv.hp}", "align": "right" },
+        { "name": "Atk label", "type": "text", "style": "label", "rect": [3, 14, 30, 10], "text": "ATK" },
+        { "name": "Atk up", "type": "text", "style": "up", "rect": [33, 14, 8, 10], "visible": "{nature.up.atk}" },
+        { "name": "Atk down", "type": "text", "style": "down", "rect": [33, 14, 8, 10], "visible": "{nature.down.atk}" },
+        { "name": "Atk track", "type": "shape", "style": "track", "rect": [42, 18, 31, 3] },
+        { "name": "Atk bar", "type": "shape", "style": "bar", "rect": [42, 18, "{iv.atk}", 3] },
+        { "name": "Atk value", "type": "text", "style": "label", "rect": [75, 14, 13, 10], "text": "{iv.atk}", "align": "right" },
+        { "name": "Def label", "type": "text", "style": "label", "rect": [3, 26, 30, 10], "text": "DEF" },
+        { "name": "Def up", "type": "text", "style": "up", "rect": [33, 26, 8, 10], "visible": "{nature.up.def}" },
+        { "name": "Def down", "type": "text", "style": "down", "rect": [33, 26, 8, 10], "visible": "{nature.down.def}" },
+        { "name": "Def track", "type": "shape", "style": "track", "rect": [42, 30, 31, 3] },
+        { "name": "Def bar", "type": "shape", "style": "bar", "rect": [42, 30, "{iv.def}", 3] },
+        { "name": "Def value", "type": "text", "style": "label", "rect": [75, 26, 13, 10], "text": "{iv.def}", "align": "right" },
+        { "name": "SpA label", "type": "text", "style": "label", "rect": [3, 38, 30, 10], "text": "SP.A" },
+        { "name": "SpA up", "type": "text", "style": "up", "rect": [33, 38, 8, 10], "visible": "{nature.up.spa}" },
+        { "name": "SpA down", "type": "text", "style": "down", "rect": [33, 38, 8, 10], "visible": "{nature.down.spa}" },
+        { "name": "SpA track", "type": "shape", "style": "track", "rect": [42, 42, 31, 3] },
+        { "name": "SpA bar", "type": "shape", "style": "bar", "rect": [42, 42, "{iv.spa}", 3] },
+        { "name": "SpA value", "type": "text", "style": "label", "rect": [75, 38, 13, 10], "text": "{iv.spa}", "align": "right" },
+        { "name": "SpD label", "type": "text", "style": "label", "rect": [3, 50, 30, 10], "text": "SP.D" },
+        { "name": "SpD up", "type": "text", "style": "up", "rect": [33, 50, 8, 10], "visible": "{nature.up.spd}" },
+        { "name": "SpD down", "type": "text", "style": "down", "rect": [33, 50, 8, 10], "visible": "{nature.down.spd}" },
+        { "name": "SpD track", "type": "shape", "style": "track", "rect": [42, 54, 31, 3] },
+        { "name": "SpD bar", "type": "shape", "style": "bar", "rect": [42, 54, "{iv.spd}", 3] },
+        { "name": "SpD value", "type": "text", "style": "label", "rect": [75, 50, 13, 10], "text": "{iv.spd}", "align": "right" },
+        { "name": "Spe label", "type": "text", "style": "label", "rect": [3, 62, 30, 10], "text": "SPE" },
+        { "name": "Spe up", "type": "text", "style": "up", "rect": [33, 62, 8, 10], "visible": "{nature.up.spe}" },
+        { "name": "Spe down", "type": "text", "style": "down", "rect": [33, 62, 8, 10], "visible": "{nature.down.spe}" },
+        { "name": "Spe track", "type": "shape", "style": "track", "rect": [42, 66, 31, 3] },
+        { "name": "Spe bar", "type": "shape", "style": "bar", "rect": [42, 66, "{iv.spe}", 3] },
+        { "name": "Spe value", "type": "text", "style": "label", "rect": [75, 62, 13, 10], "text": "{iv.spe}", "align": "right" }
+      ]
+    }
+  ]
+}

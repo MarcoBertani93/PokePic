@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>PokePic.Rendering</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SkiaSharp" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PokePic.Core\PokePic.Core.csproj" />
+  </ItemGroup>
+
+</Project>

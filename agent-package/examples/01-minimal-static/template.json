@@ -1,0 +1,24 @@
+{
+  "id": "example-minimal",
+  "version": 1,
+  "name": "Minimal",
+  "canvas": { "width": 320, "height": 120, "mode": "highResolution", "scale": 2, "background": "#1E2233" },
+  "values": { "font": { "title": "fonts/Kanit-SemiBold.ttf" } },
+  "elements": [
+    { "name": "Panel", "type": "shape", "rect": [12, 12, 296, 96], "radius": 12, "fill": "#2C3350", "stroke": { "color": "#FFCB05", "width": 2 } },
+    { "name": "Badge", "type": "shape", "shape": "ellipse", "rect": [28, 36, 48, 48], "fill": "#E3350D" },
+    { "name": "Badge band", "type": "line", "from": [28, 60], "to": [76, 60], "color": "#1E2233", "width": 4 },
+    { "name": "Badge center", "type": "shape", "shape": "ellipse", "rect": [44, 52, 16, 16], "fill": "#FFFFFF", "stroke": { "color": "#1E2233", "width": 3 } },
+    { "name": "Title", "type": "text", "rect": [92, 30, 200, 36], "text": "POKEPIC", "font": "{title}", "size": 30, "color": "#FFCB05", "valign": "middle" },
+    {
+      "name": "Subtitle",
+      "type": "text",
+      "rect": [92, 66, 200, 24],
+      "text": "Static card: no data bindings",
+      "font": "{title}",
+      "size": 14,
+      "color": "#C8CCE0",
+      "valign": "middle"
+    }
+  ]
+}

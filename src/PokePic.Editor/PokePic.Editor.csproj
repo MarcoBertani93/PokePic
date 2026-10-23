@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PokePic.Editor</RootNamespace>
+    <AssemblyName>PokePic.Editor</AssemblyName>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" />
+    <PackageReference Include="Avalonia.Desktop" />
+    <PackageReference Include="Avalonia.Themes.Fluent" />
+    <PackageReference Include="Avalonia.Fonts.Inter" />
+    <PackageReference Include="Avalonia.AvaloniaEdit" />
+    <PackageReference Include="Avalonia.Controls.ColorPicker" />
+    <PackageReference Include="CommunityToolkit.Mvvm" />
+    <PackageReference Include="Dock.Avalonia" />
+    <PackageReference Include="Dock.Avalonia.Themes.Fluent" />
+    <PackageReference Include="Dock.Model.Mvvm" />
+    <PackageReference Include="Dock.Serializer.SystemTextJson" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PokePic.Core\PokePic.Core.csproj" />
+    <ProjectReference Include="..\PokePic.Rendering\PokePic.Rendering.csproj" />
+  </ItemGroup>
+
+  <!-- Sample templates and data packs, available from the "Esempi" menu. -->
+  <ItemGroup>
+    <None Include="..\..\resources\templates\**\*" Link="Samples\templates\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\resources\data\**\*" Link="Samples\data\%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

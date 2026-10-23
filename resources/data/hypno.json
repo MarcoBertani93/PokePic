@@ -1,0 +1,87 @@
+{
+  // Sample data pack: the values and images of a Pokémon.
+  // Single type, three moves, no held item.
+  // "language" is the default language of localized texts; localized texts carry all languages, "en" is the fallback.
+  "formatVersion": 1,
+  "description": "Hypno Lv. 42 (esempio)",
+  "name": "Psych Bro",
+  "source": "sample",
+  "language": "en",
+  "values": {
+    "text": {
+      "species.name": { "en": "Hypno", "it": "Hypno", "fr": "Hypnomade", "de": "Hypno", "es": "Hypno", "ja": "スリーパー" },
+      "nickname": "Psych Bro",
+      "pokeapi.id": "97", "pokeapi.path": "female/97", "pokeapi.artwork": "97",
+      "type1.key": "psychic",
+      "teratype.key": "psychic",
+      "type1.name": { "en": "Psychic", "it": "Psico", "fr": "Psy", "de": "Psycho", "es": "Psíquico", "ja": "エスパー" },
+      "teratype.name": { "en": "Psychic", "it": "Psico", "fr": "Psy", "de": "Psycho", "es": "Psíquico", "ja": "エスパー" },
+      "type2.key": "psychic",
+      "type2.name": { "en": "Psychic", "it": "Psico", "fr": "Psy", "de": "Psycho", "es": "Psíquico", "ja": "エスパー" },
+      "gender.key": "female",
+      "gender.symbol": "♀",
+      "nature.name": { "en": "Modest", "it": "Modesta", "fr": "Modeste", "de": "Mäßig", "es": "Modesta", "ja": "ひかえめ" },
+      "ability.name": { "en": "Insomnia", "it": "Insonnia", "fr": "Insomnia", "de": "Insomnia", "es": "Insomnio", "ja": "ふみん" },
+      "heldItem.name": "",
+      "ball.name": { "en": "Poké Ball", "it": "Poké Ball", "fr": "Poké Ball", "de": "Pokéball", "es": "Poké Ball", "ja": "モンスターボール" },
+      "move1.name": { "en": "Hypnosis", "it": "Ipnosi", "fr": "Hypnose", "de": "Hypnose", "es": "Hipnosis", "ja": "さいみんじゅつ" },
+      "move1.type.key": "psychic",
+      "move1.type.name": { "en": "Psychic", "it": "Psico", "fr": "Psy", "de": "Psycho", "es": "Psíquico", "ja": "エスパー" },
+      "move2.name": { "en": "Psychic", "it": "Psichico", "fr": "Psyko", "de": "Psychokinese", "es": "Psíquico", "ja": "サイコキネシス" },
+      "move2.type.key": "psychic",
+      "move2.type.name": { "en": "Psychic", "it": "Psico", "fr": "Psy", "de": "Psycho", "es": "Psíquico", "ja": "エスパー" },
+      "move3.name": { "en": "Headbutt", "it": "Bottintesta", "fr": "Coup d'Boule", "de": "Kopfnuss", "es": "Golpe Cabeza", "ja": "ずつき" },
+      "move3.type.key": "normal",
+      "move3.type.name": { "en": "Normal", "it": "Normale", "fr": "Normal", "de": "Normal", "es": "Normal", "ja": "ノーマル" },
+      "move4.name": "",
+      "move4.type.key": "normal",
+      "move4.type.name": { "en": "Normal", "it": "Normale", "fr": "Normal", "de": "Normal", "es": "Normal", "ja": "ノーマル" }
+    },
+    "int": {
+      "species": 97,
+      "type1.id": 13, "pokeapi.type1.id": 14, "type2.id": 13, "pokeapi.type2.id": 14, "move1.type.id": 13, "pokeapi.move1.type.id": 14, "move2.type.id": 13, "pokeapi.move2.type.id": 14, "move3.type.id": 0, "pokeapi.move3.type.id": 1, "move4.type.id": 0, "pokeapi.move4.type.id": 1, "teratype.id": 13, "pokeapi.teratype.id": 14,
+      "form": 0,
+      "level": 42,
+      "friendship": 120,
+      "move1.pp": 20,
+      "move2.pp": 10,
+      "move3.pp": 15,
+      "move4.pp": 0,
+      "iv.hp": 31, "iv.atk": 12, "iv.def": 25, "iv.spa": 30, "iv.spd": 28, "iv.spe": 19,
+      "ev.hp": 84, "ev.atk": 0, "ev.def": 40, "ev.spa": 252, "ev.spd": 12, "ev.spe": 120,
+      "stat.hp": 152, "stat.atk": 72, "stat.def": 79, "stat.spa": 105, "stat.spd": 117, "stat.spe": 82,
+      "iv.total": 145, "ev.total": 508, "stat.total": 607,
+      "base.hp": 85, "base.atk": 73, "base.def": 70, "base.spa": 73, "base.spd": 115, "base.spe": 67, "base.total": 483
+    },
+    "bool": {
+      "isNicknamed": true,
+      "isShiny": false,
+      "hasType2": false,
+      "hasTera": true,
+      "hasMega": false,
+      "hasHeldItem": false,
+      "gender.isMale": false,
+      "gender.isFemale": true,
+      "gender.isNeutral": false,
+      "hasMove1": true,
+      "hasMove2": true,
+      "hasMove3": true,
+      "hasMove4": false,
+      "nature.up.atk": false, "nature.up.def": false, "nature.up.spa": true, "nature.up.spd": false, "nature.up.spe": false, "nature.down.atk": true, "nature.down.def": false, "nature.down.spa": false, "nature.down.spd": false, "nature.down.spe": false
+    },
+    "color": {
+      "type1.color": "#EF4179",
+      "teratype.color": "#EF4179",
+      "type2.color": "#EF4179",
+      "move1.type.color": "#EF4179",
+      "move2.type.color": "#EF4179",
+      "move3.type.color": "#9FA19F",
+      "move4.type.color": "#9FA19F"
+    },
+    "image": {
+      "species.sprite": "sprites/hypno.png",
+      "ball.sprite": "sprites/ball_poke.png",
+      "heldItem.sprite": "sprites/empty.png"
+    }
+  }
+}

@@ -1,0 +1,1 @@
+A stats sheet showing the species name in capitals, the Dex number with four digits, the nickname and level, base-stat bars whose length is the stat, nature, ability, friendship and the moves, with one line always in Italian.

@@ -1,0 +1,18 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ae="using:AvaloniaEdit"
+             xmlns:dock="using:PokePic.Editor.ViewModels.Docking"
+             x:Class="PokePic.Editor.Views.JsonView"
+             x:DataType="dock:JsonTool">
+  <DockPanel>
+    <Border DockPanel.Dock="Top" IsVisible="{Binding Main.DocumentError, Converter={x:Static ObjectConverters.IsNotNull}}" Background="#D0A03020" Padding="8,4">
+      <TextBlock Text="{Binding Main.DocumentError}" Foreground="White" TextWrapping="Wrap" />
+    </Border>
+    <ae:TextEditor x:Name="Editor"
+                   ShowLineNumbers="True"
+                   FontFamily="Cascadia Mono,Consolas,Menlo,monospace"
+                   FontSize="13"
+                   HorizontalScrollBarVisibility="Auto"
+                   VerticalScrollBarVisibility="Auto" />
+  </DockPanel>
+</UserControl>

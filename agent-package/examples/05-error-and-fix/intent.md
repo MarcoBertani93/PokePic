@@ -1,0 +1,1 @@
+A small pixel badge with name, level, sprite and an HP IV bar: template.json has the usual mistakes, template.round2.json and template.fixed.json show how they are found and fixed, template.render-error.json passes check but fails render.

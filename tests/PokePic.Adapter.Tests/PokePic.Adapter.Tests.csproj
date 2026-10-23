@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="PKHeX.Core" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\PokePic.Adapter\PokePic.Adapter.csproj" />
+    <ProjectReference Include="..\..\src\PokePic.Png\PokePic.Png.csproj" />
+    <ProjectReference Include="..\..\src\PokePic.Rendering\PokePic.Rendering.csproj" />
+  </ItemGroup>
+
+</Project>

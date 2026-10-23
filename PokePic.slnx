@@ -1,0 +1,25 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/PokePic.Core/PokePic.Core.csproj" />
+    <Project Path="src/PokePic.Rendering/PokePic.Rendering.csproj" />
+    <Project Path="src/PokePic.Editor/PokePic.Editor.csproj" />
+    <Project Path="src/PokePic.Cli/PokePic.Cli.csproj" />
+    <Project Path="src/PokePic.Png/PokePic.Png.csproj" />
+    <Project Path="src/PokePic.Adapter/PokePic.Adapter.csproj" />
+    <Project Path="src/PokePic.Plugin/PokePic.Plugin.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/PokePic.Core.Tests/PokePic.Core.Tests.csproj" />
+    <Project Path="tests/PokePic.Rendering.Tests/PokePic.Rendering.Tests.csproj" />
+    <Project Path="tests/PokePic.Editor.Tests/PokePic.Editor.Tests.csproj" />
+    <Project Path="tests/PokePic.Adapter.Tests/PokePic.Adapter.Tests.csproj" />
+    <Project Path="tests/PokePic.Plugin.Tests/PokePic.Plugin.Tests.csproj" />
+  </Folder>
+  <Folder Name="/solution/">
+    <File Path="CLAUDE.md" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="nuget.config" />
+    <File Path="build/package-plugin.ps1" />
+  </Folder>
+</Solution>

@@ -1,0 +1,86 @@
+{
+  // Sample data pack: dual type, four moves, held item.
+  // "language" is the default language of localized texts; localized texts carry all languages, "en" is the fallback.
+  "formatVersion": 1,
+  "description": "Charizard Lv. 50 (esempio)",
+  "name": "Charizard",
+  "source": "sample",
+  "language": "it",
+  "values": {
+    "text": {
+      "species.name": { "en": "Charizard", "it": "Charizard", "fr": "Dracaufeu", "de": "Glurak", "es": "Charizard", "ja": "リザードン" },
+      "nickname": "Soprannome",
+      "pokeapi.id": "6", "pokeapi.path": "6", "pokeapi.artwork": "6",
+      "type1.key": "fire",
+      "teratype.key": "fire",
+      "type1.name": { "en": "Fire", "it": "Fuoco", "fr": "Feu", "de": "Feuer", "es": "Fuego", "ja": "ほのお" },
+      "teratype.name": { "en": "Fire", "it": "Fuoco", "fr": "Feu", "de": "Feuer", "es": "Fuego", "ja": "ほのお" },
+      "type2.key": "flying",
+      "type2.name": { "en": "Flying", "it": "Volante", "fr": "Vol", "de": "Flug", "es": "Volador", "ja": "ひこう" },
+      "gender.key": "male",
+      "gender.symbol": "♂",
+      "nature.name": { "en": "Adamant", "it": "Decisa", "fr": "Rigide", "de": "Hart", "es": "Firme", "ja": "いじっぱり" },
+      "ability.name": { "en": "Blaze", "it": "Aiutofuoco", "fr": "Brasier", "de": "Großbrand", "es": "Mar Llamas", "ja": "もうか" },
+      "heldItem.name": { "en": "Leftovers", "it": "Avanzi", "fr": "Restes", "de": "Überreste", "es": "Restos", "ja": "たべのこし" },
+      "ball.name": { "en": "Ultra Ball", "it": "Ultra Ball", "fr": "Hyper Ball", "de": "Hyperball", "es": "Ultra Ball", "ja": "ハイパーボール" },
+      "move1.name": { "en": "Flamethrower", "it": "Lanciafiamme", "fr": "Lance-Flammes", "de": "Flammenwurf", "es": "Lanzallamas", "ja": "かえんほうしゃ" },
+      "move1.type.key": "fire",
+      "move1.type.name": { "en": "Fire", "it": "Fuoco", "fr": "Feu", "de": "Feuer", "es": "Fuego", "ja": "ほのお" },
+      "move2.name": { "en": "Air Slash", "it": "Eterelama", "fr": "Lame d'Air", "de": "Luftschnitt", "es": "Tajo Aéreo", "ja": "エアスラッシュ" },
+      "move2.type.key": "flying",
+      "move2.type.name": { "en": "Flying", "it": "Volante", "fr": "Vol", "de": "Flug", "es": "Volador", "ja": "ひこう" },
+      "move3.name": { "en": "Dragon Claw", "it": "Dragartigli", "fr": "Draco-Griffe", "de": "Drachenklaue", "es": "Garra Dragón", "ja": "ドラゴンクロー" },
+      "move3.type.key": "dragon",
+      "move3.type.name": { "en": "Dragon", "it": "Drago", "fr": "Dragon", "de": "Drache", "es": "Dragón", "ja": "ドラゴン" },
+      "move4.name": { "en": "Earthquake", "it": "Terremoto", "fr": "Séisme", "de": "Erdbeben", "es": "Terremoto", "ja": "じしん" },
+      "move4.type.key": "ground",
+      "move4.type.name": { "en": "Ground", "it": "Terra", "fr": "Sol", "de": "Boden", "es": "Tierra", "ja": "じめん" }
+    },
+    "int": {
+      "species": 6,
+      "type1.id": 9, "pokeapi.type1.id": 10, "type2.id": 2, "pokeapi.type2.id": 3, "move1.type.id": 9, "pokeapi.move1.type.id": 10, "move2.type.id": 2, "pokeapi.move2.type.id": 3, "move3.type.id": 15, "pokeapi.move3.type.id": 16, "move4.type.id": 4, "pokeapi.move4.type.id": 5, "teratype.id": 9, "pokeapi.teratype.id": 10,
+      "form": 0,
+      "level": 50,
+      "friendship": 255,
+      "move1.pp": 15,
+      "move2.pp": 15,
+      "move3.pp": 15,
+      "move4.pp": 10,
+      "iv.hp": 31, "iv.atk": 31, "iv.def": 31, "iv.spa": 20, "iv.spd": 31, "iv.spe": 31,
+      "ev.hp": 4, "ev.atk": 252, "ev.def": 0, "ev.spa": 0, "ev.spd": 0, "ev.spe": 252,
+      "stat.hp": 154, "stat.atk": 149, "stat.def": 98, "stat.spa": 106, "stat.spd": 105, "stat.spe": 152,
+      "iv.total": 175, "ev.total": 508, "stat.total": 764,
+      "base.hp": 78, "base.atk": 84, "base.def": 78, "base.spa": 109, "base.spd": 85, "base.spe": 100, "base.total": 534
+    },
+    "bool": {
+      "isNicknamed": true,
+      "isShiny": false,
+      "hasType2": true,
+      "hasTera": true,
+      "hasMega": false,
+      "hasHeldItem": true,
+      "gender.isMale": true,
+      "gender.isFemale": false,
+      "gender.isNeutral": false,
+      "hasMove1": true,
+      "hasMove2": true,
+      "hasMove3": true,
+      "hasMove4": true,
+      "nature.up.atk": true, "nature.up.def": false, "nature.up.spa": false, "nature.up.spd": false, "nature.up.spe": false, "nature.down.atk": false, "nature.down.def": false, "nature.down.spa": true, "nature.down.spd": false, "nature.down.spe": false
+    },
+    "color": {
+      "type1.color": "#E62829",
+      "teratype.color": "#E62829",
+      "type2.color": "#81B9EF",
+      "move1.type.color": "#E62829",
+      "move2.type.color": "#81B9EF",
+      "move3.type.color": "#5061E1",
+      "move4.type.color": "#915121"
+    },
+    "image": {
+      "species.sprite": "sprites/charizard.png",
+      "ball.sprite": "sprites/ball_ultra.png",
+      "heldItem.sprite": "sprites/item_leftovers.png"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>PokePic.Cli</RootNamespace>
+    <AssemblyName>pokepic</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PokePic.Core\PokePic.Core.csproj" />
+    <ProjectReference Include="..\PokePic.Rendering\PokePic.Rendering.csproj" />
+  </ItemGroup>
+
+</Project>

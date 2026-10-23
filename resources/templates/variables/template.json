@@ -1,0 +1,43 @@
+// Demo of template values. Each section of "values" gives the kind; every kind can be written in four forms:
+//   single        "#FFFFFFC0", 6, "fonts/a.ttf"
+//   by language   { "en": "Lv.", "it": "Liv." }                       ("en" is required)
+//   set           { "items": { "fire": …, "water": … }, "fallback": … } used as "{set[key]}"
+//   pattern       { "pattern": "artwork/{key}.png", "fallback": … }    texts, images and fonts only
+// Colors, numbers and true/false take a literal or a reference of their kind ("{type1.color}", "{!hasType2}");
+// texts, images and fonts are composed ("#{dex} {title}", "{BASE}/{key}.png").
+{
+  "id": "variables",
+  "version": 1,
+  "name": "Variables demo",
+  "canvas": { "width": 192, "height": 80, "mode": "pixelPerfect", "scale": 4 },
+  "values": {
+    "text": {
+      "dex": "{species:D4}",                                        // a binding with a format -> "0006"
+      "title": "{species.name:upper} Lv. {lv}",                     // composed, follows the text's language
+      "header": "#{dex} {title}",                                   // a value can use other values
+      "totals": "IV {iv.total}  EV {ev.total}  Tot {stat.total}",
+      "lvLabel": { "en": "Lv.", "it": "Liv.", "fr": "N.", "de": "Lv.", "es": "Nv." } // by language
+    },
+    "int": { "lv": "{level}", "pad": 6 },                            // a reference to a data value, a constant
+    "bool": { "single": "{!hasType2}", "showTotals": true },
+    "color": {
+      "accent": "{type1.color}",
+      "panel": "#FFFFFFC0",
+      // A set: "{typeTint[type1.key]}" picks the color of the Pokémon's first type.
+      "typeTint": { "items": { "fire": "#F08030", "water": "#6890F0", "grass": "#78C850", "psychic": "#F85888" }, "fallback": "#A8A878" }
+    },
+    "font": { "pixel": "fonts/PocketPixelRegular.ttf" }
+  },
+  "styles": { "label": { "type": "text", "font": "{pixel}", "size": 8, "color": "#000000" } },
+  "elements": [
+    { "name": "Background", "type": "shape", "rect": [0, 0, 192, 80], "fill": "{accent}" },
+    { "name": "Panel", "type": "shape", "rect": ["{pad}", "{pad}", 180, 68], "radius": 4, "fill": "{panel}" },
+    { "name": "Header", "type": "text", "style": "label", "rect": [12, 12, 168, 10], "text": "{header}" },
+    { "name": "Totals", "type": "text", "style": "label", "rect": [12, 26, 168, 10], "text": "{totals}", "visible": "{showTotals}" },
+    { "name": "Single type", "type": "text", "style": "label", "rect": [12, 40, 168, 10], "text": "{type1.name}", "visible": "{single}" },
+    { "name": "Dual type", "type": "text", "style": "label", "rect": [12, 40, 168, 10], "text": "{type1.name} / {type2.name}", "visible": "{!single}" },
+    { "name": "Level label", "type": "text", "style": "label", "rect": [12, 58, 40, 10], "text": "{lvLabel} {lv}" },
+    { "name": "Level bar", "type": "shape", "rect": [52, 60, "{lv}", 6], "fill": "{typeTint[type1.key]}", "stroke": { "color": "#000000", "width": 1 } },
+    { "name": "Level scale", "type": "shape", "rect": [52, 60, 100, 6], "stroke": { "color": "#00000060", "width": 1 } }
+  ]
+}

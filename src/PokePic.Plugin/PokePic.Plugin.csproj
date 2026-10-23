@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    PKHeX plugin. PKHeX loads every .dll under its "plugins" folder, each in its own load context that resolves
+    this plugin's dependencies through PokePic.Plugin.deps.json (EnableDynamicLoading). Native libraries are not
+    resolved by PKHeX: NativeSkia points SkiaSharp to its libSkiaSharp.dll.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <RootNamespace>PokePic.Plugin</RootNamespace>
+    <ApplicationIcon />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- PKHeX's own PKHeX.Core is used at run time (the plugin's types must match PKHeX's): never shipped. -->
+    <PackageReference Include="PKHeX.Core" ExcludeAssets="runtime" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PokePic.Core\PokePic.Core.csproj" />
+    <ProjectReference Include="..\PokePic.Rendering\PokePic.Rendering.csproj" />
+    <ProjectReference Include="..\PokePic.Png\PokePic.Png.csproj" />
+    <ProjectReference Include="..\PokePic.Adapter\PokePic.Adapter.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Menu and window icons, from the old PKHeX.PokePic plugin. -->
+    <EmbeddedResource Include="Resources\*" LogicalName="icons/%(Filename)%(Extension)" WithCulture="false" Type="Non-Resx" />
+  </ItemGroup>
+
+  <!--
+    A single DLL: the .NET dependencies become "deps/{file}" resources (EmbeddedDependencies loads them) and the
+    Windows native libraries "native/{rid}/{file}" (NativeSkia extracts them). PKHeX.Core is not among them.
+  -->
+  <Target Name="EmbedDependencies" AfterTargets="ResolveReferences" BeforeTargets="PrepareResources">
+    <ItemGroup>
+      <_PokePicManaged Include="@(ReferenceCopyLocalPaths)" Condition="'%(ReferenceCopyLocalPaths.Extension)' == '.dll' And '%(ReferenceCopyLocalPaths.DestinationSubDirectory)' == ''" />
+      <_PokePicNative Include="@(RuntimeTargetsCopyLocalItems)"
+                      Condition="'%(RuntimeTargetsCopyLocalItems.Extension)' == '.dll' And ('%(RuntimeTargetsCopyLocalItems.RuntimeIdentifier)' == 'win-x64' Or '%(RuntimeTargetsCopyLocalItems.RuntimeIdentifier)' == 'win-arm64')" />
+      <EmbeddedResource Include="@(_PokePicManaged)" LogicalName="deps/%(_PokePicManaged.Filename)%(_PokePicManaged.Extension)" WithCulture="false" Type="Non-Resx" />
+      <EmbeddedResource Include="@(_PokePicNative)" LogicalName="native/%(_PokePicNative.RuntimeIdentifier)/%(_PokePicNative.Filename)%(_PokePicNative.Extension)" WithCulture="false" Type="Non-Resx" />
+    </ItemGroup>
+  </Target>
+
+</Project>

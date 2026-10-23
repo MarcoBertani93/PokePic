@@ -1,0 +1,1 @@
+A card colored by the Pokémon's types with its HOME artwork and type icons downloaded from PokeAPI, the game sprite, ball and held item from the data, one chip per move colored by the move type, and the species name in Japanese.
